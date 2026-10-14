@@ -7,7 +7,7 @@
 <title>IMROVICH Packer — сборка модов под тебя</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700&display=swap">
 <style>
-:root{--text:#FFF7E0;--text-dim:#D9C79A;--text-faint:#8A7A55;--glass-bg:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.018)),rgba(28,20,8,.68);--glass-bg-strong:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),rgba(28,20,8,.78);--glass-bg-soft:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.012)),rgba(28,20,8,.5);--glass-border:#5C4A1E;--glass-border-strong:#C99B26;--glass-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 50px rgba(0,0,0,.42);--gold:#FFD24A;--amber:#E0A800;--danger:#E0684F;--ok:#7FC77F;--warn:#E0A800;--font-body:'Manrope',system-ui,sans-serif;--font-display:'Unbounded','Manrope',system-ui,sans-serif;--r-lg:26px;--r-md:18px;--r-sm:12px}
+:root{--text:#FFF7E0;--text-dim:#D9C79A;--text-faint:#8A7A55;--glass-bg:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.018)),rgba(28,20,8,.68);--glass-bg-strong:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),rgba(28,20,8,.78);--glass-bg-soft:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.012)),rgba(28,20,8,.5);--glass-border:#5C4A1E;--glass-border-strong:#C99B26;--glass-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 50px rgba(0,0,0,.42);--gold:#FFD24A;--amber:#E0A800;--danger:#E0684F;--ok:#7FC77F;--font-body:'Manrope',system-ui,sans-serif;--font-display:'Unbounded','Manrope',system-ui,sans-serif;--r-lg:26px;--r-md:18px;--r-sm:12px}
 *{box-sizing:border-box}
 html{background:#0a0703}
 body{margin:0;color:var(--text);font-family:var(--font-body);line-height:1.5;min-height:100vh;position:relative;overflow-x:hidden}
@@ -20,60 +20,80 @@ a{color:var(--gold)}
 .f1{left:10%;--fs:3px}.f2{left:28%;--fs:2.5px}.f3{left:50%;--fs:3.5px}.f4{left:70%;--fs:2.5px}.f5{left:88%;--fs:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 .glass{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px) saturate(140%);box-shadow:var(--glass-shadow)}
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes pageIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 rgba(224,168,0,0)}50%{box-shadow:0 0 24px rgba(224,168,0,.35)}}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+@keyframes cardHoverLift{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+@keyframes spinIcon{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes shineSweep{0%{left:-100%}60%,100%{left:120%}}
+@keyframes popIn{0%{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+/* ===== /АНИМАЦИИ ===== */
 .site-header{padding:14px 0 0;position:sticky;top:14px;z-index:50}
 .site-header .wrap{max-width:1300px}
 .header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:12px 20px;border-radius:var(--r-lg);background:var(--glass-bg-strong);border:1.5px solid var(--glass-border);backdrop-filter:blur(20px) saturate(140%);box-shadow:var(--glass-shadow)}
-.brand{display:flex;align-items:center;gap:10px;justify-self:start}
-.brand-mark{width:30px;height:30px;display:block}
+.brand{display:flex;align-items:center;gap:10px;justify-self:start;transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.brand:hover{transform:scale(1.03)}
+.brand-mark{width:30px;height:30px;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.brand:hover .brand-mark{transform:rotate(-8deg)}
 .brand-text{font-family:var(--font-display);font-size:1rem;white-space:nowrap}
 .brand-name{font-weight:700}.brand-suffix{font-weight:500;color:var(--gold);margin-left:3px}
 .top-nav{justify-self:center;display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(0,0,0,.24);box-shadow:inset 0 1px 3px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.06)}
-.top-nav-link{flex-shrink:0;color:var(--text-dim);font-size:.88rem;font-weight:700;padding:10px 22px;border-radius:999px;transition:all .18s;white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit}
-.top-nav-link:hover{color:var(--text)}
+.top-nav-link{flex-shrink:0;color:var(--text-dim);font-size:.88rem;font-weight:700;padding:10px 22px;border-radius:999px;transition:all .25s cubic-bezier(.2,.7,.3,1);white-space:nowrap;cursor:pointer;background:none;border:none;font-family:inherit;position:relative;overflow:hidden}
+.top-nav-link:hover{color:var(--text);transform:translateY(-1px)}
 .top-nav-link.is-active{color:#1a1206;background:linear-gradient(135deg,var(--amber),var(--gold));box-shadow:0 4px 14px rgba(224,168,0,.35)}
 .header-actions{justify-self:end;display:flex;align-items:center;gap:12px}
 @media(max-width:900px){.header-inner{grid-template-columns:1fr;justify-items:center}.brand,.header-actions{justify-self:center}.top-nav{max-width:100%;overflow-x:auto}}
-.hero{text-align:center;padding:48px 0 24px}
+.hero{text-align:center;padding:48px 0 24px;animation:slideUp .6s cubic-bezier(.2,.7,.3,1) both}
 .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin:0 0 16px}
-.accent{color:var(--gold)}
+.accent{color:var(--gold);position:relative;display:inline-block}
+.accent::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:glowPulse 3s ease-in-out infinite}
 .hero-sub{color:var(--text-dim);max-width:600px;margin:0 auto;font-size:1.05rem}
-.wizard-shell{border-radius:var(--r-lg);padding:32px;margin-bottom:48px}
+.wizard-shell{border-radius:var(--r-lg);padding:32px;margin-bottom:48px;animation:slideUp .6s .1s cubic-bezier(.2,.7,.3,1) both}
 .wizard-progress{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap}
 .wp-dot{width:12px;height:12px;border-radius:50%;background:var(--glass-border);transition:all .3s}
-.wp-dot.active{background:var(--gold);box-shadow:0 0 12px rgba(255,210,74,.55)}
+.wp-dot.active{background:var(--gold);box-shadow:0 0 12px rgba(255,210,74,.55);animation:glowPulse 2s ease-in-out infinite}
 .wp-line{width:40px;height:2px;background:var(--glass-border)}
 .wp-label{font-size:.8rem;color:var(--text-faint);margin-left:12px}
-.wizard-step{animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wizard-step{animation:fadeIn .35s cubic-bezier(.2,.7,.3,1) both}
 .step-title{font-family:var(--font-display);font-size:1.4rem;margin:0 0 8px}
 .step-sub{color:var(--text-dim);font-size:.95rem;margin:0 0 24px}
 .option-grid{display:grid;gap:12px;margin-bottom:24px}
 .option-grid.cols-2{grid-template-columns:1fr 1fr}
 @media(max-width:600px){.option-grid.cols-2{grid-template-columns:1fr}}
-.option-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--glass-bg-soft);border:1.5px solid var(--glass-border);border-radius:var(--r-md);padding:18px;cursor:pointer;text-align:left;color:var(--text);transition:all .2s;width:100%;font-family:inherit}
-.option-card:hover{border-color:var(--glass-border-strong);background:var(--glass-bg)}
-.option-card.selected{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 8px 24px rgba(224,168,0,.25)}
+.option-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--glass-bg-soft);border:1.5px solid var(--glass-border);border-radius:var(--r-md);padding:18px;cursor:pointer;text-align:left;color:var(--text);transition:all .25s cubic-bezier(.2,.7,.3,1);width:100%;font-family:inherit;position:relative;overflow:hidden;animation:slideUp .35s cubic-bezier(.2,.7,.3,1) both}
+.option-card:hover{border-color:var(--glass-border-strong);background:var(--glass-bg);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.option-card::before{content:'';position:absolute;top:0;left:-100%;width:80px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-20deg);transition:left .6s ease}
+.option-card:hover::before{left:120%}
+.option-card.selected{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 8px 24px rgba(224,168,0,.25);background:var(--glass-bg)}
+.option-card.selected::after{content:'';position:absolute;top:8px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:glowPulse 1.8s ease-in-out infinite}
 .option-title{font-weight:700;font-size:1rem;display:flex;align-items:center;gap:6px}
 .option-tagline{font-size:.82rem;color:var(--text-dim);line-height:1.4}
 .option-head{display:flex;align-items:center;gap:8px}
 .step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px;flex-wrap:wrap}
-.btn{padding:12px 28px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;border:none;font-family:inherit}
+.btn{padding:12px 28px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.2,.7,.3,1);border:none;font-family:inherit;position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;top:50%;left:50%;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none}
+.btn:active::after{animation:ripple .5s ease-out}
 .btn-primary{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;box-shadow:0 4px 14px rgba(224,168,0,.35)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
-.btn-primary:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(224,168,0,.45)}
+.btn-primary:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,168,0,.5)}
 .btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--glass-border)}
-.btn-ghost:hover{border-color:var(--gold);color:var(--text)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--text);transform:translateY(-1px)}
 .btn-sm{padding:8px 16px;font-size:.82rem}
-.glass-input{width:100%;padding:12px 16px;border-radius:var(--r-sm);background:var(--glass-bg-soft);border:1px solid var(--glass-border);color:var(--text);font-size:.95rem;font-family:inherit}
+.glass-input{width:100%;padding:12px 16px;border-radius:var(--r-sm);background:var(--glass-bg-soft);border:1px solid var(--glass-border);color:var(--text);font-size:.95rem;font-family:inherit;transition:all .25s}
+.glass-input:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(224,168,0,.15)}
 .glass-input:disabled{opacity:.5;cursor:not-allowed}
 .glass-input::placeholder{color:var(--text-faint)}
 textarea.glass-input{resize:vertical;min-height:100px;font-family:var(--font-body)}
 select.glass-input{cursor:pointer}
 .version-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;max-height:240px;overflow-y:auto;padding:6px;border:1px solid var(--glass-border);border-radius:var(--r-sm);background:var(--glass-bg-soft)}
-.version-chip{padding:7px 14px;border-radius:999px;border:1px solid var(--glass-border);background:transparent;color:var(--text-dim);font-family:inherit;font-size:.85rem;cursor:pointer;transition:all .15s}
-.version-chip:hover{border-color:var(--glass-border-strong);color:var(--text)}
-.version-chip.active{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border-color:var(--gold);font-weight:700}
+.version-chip{padding:7px 14px;border-radius:999px;border:1px solid var(--glass-border);background:transparent;color:var(--text-dim);font-family:inherit;font-size:.85rem;cursor:pointer;transition:all .2s cubic-bezier(.2,.7,.3,1);animation:popIn .3s cubic-bezier(.2,.7,.3,1) both}
+.version-chip:hover{border-color:var(--glass-border-strong);color:var(--text);transform:translateY(-1px)}
+.version-chip.active{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border-color:var(--gold);font-weight:700;box-shadow:0 4px 12px rgba(224,168,0,.3)}
 .version-chip.latest::after{content:'★';margin-left:5px;font-size:.7rem;opacity:.85}
 .results-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
 .hint{color:var(--text-faint);font-size:.8rem;margin:0}
@@ -88,13 +108,14 @@ select.glass-input{cursor:pointer}
 .filter-row input[type=range]{flex:1 1 220px;min-width:160px;accent-color:var(--gold)}
 .filter-row .size-val{color:var(--gold);font-weight:700;min-width:60px}
 .results-pager{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.pager-btn{padding:6px 14px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.8rem;font-family:inherit}
-.pager-btn:hover{border-color:var(--glass-border-strong);color:var(--text)}
+.pager-btn{padding:6px 14px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.8rem;font-family:inherit;transition:all .2s}
+.pager-btn:hover{border-color:var(--glass-border-strong);color:var(--text);transform:translateY(-1px)}
 .pager-btn.active{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:700}
-.result-card{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);margin-bottom:10px;align-items:flex-start;transition:border-color .15s,background .15s;cursor:pointer;position:relative}
-.result-card:hover{border-color:var(--glass-border-strong);background:var(--glass-bg)}
-.result-card.is-checked{border-color:var(--gold);background:var(--glass-bg)}
-.result-card img{width:44px;height:44px;border-radius:8px;flex-shrink:0;image-rendering:pixelated;object-fit:cover}
+.result-card{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);margin-bottom:10px;align-items:flex-start;transition:all .25s cubic-bezier(.2,.7,.3,1);cursor:pointer;position:relative;animation:slideUp .3s cubic-bezier(.2,.7,.3,1) both}
+.result-card:hover{border-color:var(--glass-border-strong);background:var(--glass-bg);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.35)}
+.result-card.is-checked{border-color:var(--gold);background:var(--glass-bg);box-shadow:0 0 0 1px rgba(224,168,0,.4)}
+.result-card img{width:44px;height:44px;border-radius:8px;flex-shrink:0;image-rendering:pixelated;object-fit:cover;transition:transform .3s}
+.result-card:hover img{transform:scale(1.08)}
 .result-info{flex:1;min-width:0}
 .result-title{font-weight:700;font-size:.95rem;margin:0 0 4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .result-badges{display:inline-flex;gap:4px;flex-wrap:wrap}
@@ -105,31 +126,34 @@ select.glass-input{cursor:pointer}
 .result-libs{margin-top:6px;font-size:.76rem;color:var(--text-faint);line-height:1.4}
 .result-libs strong{color:var(--gold);font-weight:600}
 .result-checkbox{margin-top:4px;accent-color:var(--gold);width:18px;height:18px;cursor:pointer;flex-shrink:0}
-.copy-link-btn{background:none;border:none;color:var(--text-faint);cursor:pointer;padding:2px 6px;border-radius:6px;font-size:.85rem;transition:all .15s}
-.copy-link-btn:hover{color:var(--gold);background:rgba(224,168,0,.12)}
-.warn-box{padding:12px 16px;border-radius:var(--r-sm);background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8;font-size:.85rem;margin-bottom:14px;line-height:1.5}
+.copy-link-btn{background:none;border:none;color:var(--text-faint);cursor:pointer;padding:2px 6px;border-radius:6px;font-size:.85rem;transition:all .2s}
+.copy-link-btn:hover{color:var(--gold);background:rgba(224,168,0,.12);transform:scale(1.15)}
+.warn-box{padding:12px 16px;border-radius:var(--r-sm);background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8;font-size:.85rem;margin-bottom:14px;line-height:1.5;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
 .warn-box strong{color:#ffd4c8}
-.ok-box{padding:12px 16px;border-radius:var(--r-sm);background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8;font-size:.85rem;margin-bottom:14px;line-height:1.5}
+.ok-box{padding:12px 16px;border-radius:var(--r-sm);background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8;font-size:.85rem;margin-bottom:14px;line-height:1.5;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
 .progress-bar{width:100%;height:8px;border-radius:999px;background:rgba(0,0,0,.4);overflow:hidden;margin-top:12px;display:none}
-.progress-bar.active{display:block}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--gold));width:0;transition:width .2s;border-radius:999px}
+.progress-bar.active{display:block;animation:fadeIn .3s both}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--gold));width:0;transition:width .3s cubic-bezier(.2,.7,.3,1);border-radius:999px;position:relative;overflow:hidden}
+.progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shineSweep 1.8s ease-in-out infinite}
 .status-text{font-size:.85rem;color:var(--text-dim);margin-top:12px}
 .status-text.error{color:var(--danger)}
 .status-text.ok{color:var(--ok)}
-.builds-page{padding:40px 0 60px;min-height:calc(100vh - 220px)}
+.builds-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
 .builds-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:32px}
 .builds-head-text{min-width:0;flex:1 1 300px}
 .builds-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.4rem);margin:0 0 8px}
 .builds-sub{color:var(--text-dim);margin:0;font-size:1rem}
 .builds-head-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.builds-empty{text-align:center;padding:80px 20px;color:var(--text-faint)}
-.builds-empty-icon{font-size:4rem;margin-bottom:16px;opacity:.4;display:inline-block}
+.builds-empty{text-align:center;padding:80px 20px;color:var(--text-faint);animation:slideUp .5s cubic-bezier(.2,.7,.3,1) both}
+.builds-empty-icon{font-size:4rem;margin-bottom:16px;opacity:.4;display:inline-block;animation:popIn .6s cubic-bezier(.2,.7,.3,1) both}
 .builds-empty-title{font-family:var(--font-display);font-size:1.3rem;color:var(--text-dim);margin:0 0 8px}
 .builds-empty-text{color:var(--text-faint);margin:0 0 24px}
 .builds-empty-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .builds-list{display:grid;gap:14px}
-.build-card{padding:20px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;transition:border-color .15s}
-.build-card:hover{border-color:var(--glass-border-strong)}
+.build-card{padding:20px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;transition:all .3s cubic-bezier(.2,.7,.3,1);cursor:pointer;position:relative;overflow:hidden;animation:slideUp .4s cubic-bezier(.2,.7,.3,1) both}
+.build-card::before{content:'';position:absolute;top:0;left:-100%;width:100px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transform:skewX(-20deg);transition:left .8s ease;pointer-events:none}
+.build-card:hover::before{left:120%}
+.build-card:hover{border-color:var(--glass-border-strong);transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,0,0,.4),0 0 0 1px rgba(224,168,0,.1)}
 .build-card-main{flex:1;min-width:220px}
 .build-card-title{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--text)}
 .build-card-date{font-size:.75rem;color:var(--text-faint);font-weight:400;font-family:var(--font-body)}
@@ -138,34 +162,62 @@ select.glass-input{cursor:pointer}
 .build-card-meta b{color:var(--gold);font-weight:600}
 .build-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .build-badge{font-size:.72rem;padding:3px 10px;border-radius:999px;background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.28);color:var(--gold);font-weight:600}
-.build-card-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.build-load-btn{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border:none;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .2s}
-.build-load-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(224,168,0,.4)}
-.build-export-btn{background:transparent;color:var(--gold);border:1px solid var(--glass-border-strong);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .2s}
-.build-export-btn:hover{background:rgba(224,168,0,.12)}
-.build-del-btn{background:transparent;color:var(--text-faint);border:1px solid var(--glass-border);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .2s}
-.build-del-btn:hover{color:var(--danger);border-color:var(--danger)}
-/* ================ TOOLS ================ */
-.tools-page{padding:40px 0 60px;min-height:calc(100vh - 220px)}
+.build-card-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:relative;z-index:2}
+.build-load-btn{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border:none;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden}
+.build-load-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(224,168,0,.5)}
+.build-export-btn{background:transparent;color:var(--gold);border:1px solid var(--glass-border-strong);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s}
+.build-export-btn:hover{background:rgba(224,168,0,.12);transform:translateY(-2px)}
+.build-del-btn{background:transparent;color:var(--text-faint);border:1px solid var(--glass-border);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s}
+.build-del-btn:hover{color:var(--danger);border-color:var(--danger);transform:translateY(-2px)}
+/* ===== ДЕТАЛИ СБОРКИ ===== */
+.detail-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
+.detail-back{margin-bottom:22px;display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-weight:700;font-family:inherit;transition:all .25s cubic-bezier(.2,.7,.3,1)}
+.detail-back:hover{border-color:var(--gold);color:var(--gold);transform:translateX(-4px)}
+.detail-back .arrow{display:inline-block;transition:transform .25s}
+.detail-back:hover .arrow{transform:translateX(-4px)}
+.detail-header{padding:26px;border-radius:var(--r-lg);background:var(--glass-bg-strong);border:1.5px solid var(--glass-border);backdrop-filter:blur(20px);box-shadow:var(--glass-shadow);margin-bottom:24px;animation:slideUp .45s cubic-bezier(.2,.7,.3,1) both}
+.detail-title{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);margin:0 0 10px;color:var(--text)}
+.detail-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.88rem;color:var(--text-dim);margin-bottom:16px}
+.detail-meta b{color:var(--gold);font-weight:600}
+.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.detail-stats{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--text-faint);margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.detail-stats span{display:inline-flex;align-items:center;gap:6px}
+.detail-stats b{color:var(--gold);font-weight:600}
+.detail-mods{display:grid;gap:10px}
+.detail-mod{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);align-items:flex-start;transition:all .25s cubic-bezier(.2,.7,.3,1);animation:slideUp .35s cubic-bezier(.2,.7,.3,1) both}
+.detail-mod:hover{border-color:var(--glass-border-strong);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.35);background:var(--glass-bg)}
+.detail-mod img{width:48px;height:48px;border-radius:8px;flex-shrink:0;object-fit:cover;image-rendering:pixelated;transition:transform .3s}
+.detail-mod:hover img{transform:scale(1.1)}
+.detail-mod-info{flex:1;min-width:0}
+.detail-mod-title{font-weight:700;font-size:.95rem;margin:0 0 3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.detail-mod-author{font-size:.78rem;color:var(--text-faint);margin:0 0 6px}
+.detail-mod-desc{font-size:.82rem;color:var(--text-dim);margin:0;line-height:1.4}
+.detail-mod-meta{display:flex;gap:14px;font-size:.75rem;color:var(--text-faint);margin-top:6px;flex-wrap:wrap}
+.detail-empty{text-align:center;padding:60px 20px;color:var(--text-faint);animation:slideUp .4s both}
+/* ===== /ДЕТАЛИ ===== */
+/* ===== ИНСТРУМЕНТЫ ===== */
+.tools-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
 .tools-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.tools-tab{padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-family:inherit;font-weight:700;transition:all .15s}
-.tools-tab:hover{border-color:var(--glass-border-strong);color:var(--text)}
+.tools-tab{padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-family:inherit;font-weight:700;transition:all .25s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden}
+.tools-tab:hover{border-color:var(--glass-border-strong);color:var(--text);transform:translateY(-2px)}
 .tools-tab.active{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border-color:var(--gold);box-shadow:0 4px 12px rgba(224,168,0,.3)}
-.tool-panel{padding:24px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);animation:fadeIn .25s ease}
+.tool-panel{padding:24px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);animation:slideUp .4s cubic-bezier(.2,.7,.3,1) both}
 .tool-panel h3{font-family:var(--font-display);margin:0 0 8px;font-size:1.2rem}
 .tool-panel p.tool-desc{color:var(--text-dim);font-size:.88rem;margin:0 0 20px}
-.drop-zone{border:2px dashed var(--glass-border-strong);border-radius:var(--r-md);padding:36px 20px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:18px;background:rgba(255,255,255,.02)}
-.drop-zone:hover{border-color:var(--gold);background:rgba(224,168,0,.06)}
-.drop-zone.dragover{border-color:var(--gold);background:rgba(224,168,0,.1);transform:scale(1.01)}
-.drop-zone-icon{font-size:2.4rem;margin-bottom:10px;opacity:.7}
+.drop-zone{border:2px dashed var(--glass-border-strong);border-radius:var(--r-md);padding:36px 20px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.2,.7,.3,1);margin-bottom:18px;background:rgba(255,255,255,.02);position:relative;overflow:hidden}
+.drop-zone:hover{border-color:var(--gold);background:rgba(224,168,0,.06);transform:scale(1.01)}
+.drop-zone.dragover{border-color:var(--gold);background:rgba(224,168,0,.1);transform:scale(1.02);box-shadow:0 0 30px rgba(224,168,0,.3)}
+.drop-zone-icon{font-size:2.4rem;margin-bottom:10px;opacity:.7;display:inline-block;transition:transform .3s}
+.drop-zone:hover .drop-zone-icon{transform:translateY(-4px) scale(1.1)}
 .drop-zone-text{color:var(--text-dim);font-size:.9rem}
 .drop-zone-text strong{color:var(--gold)}
-.tool-issue{display:flex;gap:12px;padding:12px 16px;border-radius:var(--r-sm);margin-bottom:8px;align-items:flex-start;font-size:.85rem;line-height:1.4}
+.tool-issue{display:flex;gap:12px;padding:12px 16px;border-radius:var(--r-sm);margin-bottom:8px;align-items:flex-start;font-size:.85rem;line-height:1.4;animation:slideUp .35s cubic-bezier(.2,.7,.3,1) both}
 .tool-issue-icon{font-size:1.2rem;flex-shrink:0;line-height:1}
 .tool-issue.error{background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8}
 .tool-issue.warn{background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.35);color:#ffe6a8}
 .tool-issue.info{background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8}
-.update-row{display:flex;gap:12px;padding:12px;border-radius:var(--r-sm);background:var(--glass-bg-soft);border:1px solid var(--glass-border);margin-bottom:8px;align-items:center}
+.update-row{display:flex;gap:12px;padding:12px;border-radius:var(--r-sm);background:var(--glass-bg-soft);border:1px solid var(--glass-border);margin-bottom:8px;align-items:center;transition:all .25s;animation:slideUp .3s cubic-bezier(.2,.7,.3,1) both}
+.update-row:hover{transform:translateY(-2px);border-color:var(--glass-border-strong)}
 .update-row img{width:36px;height:36px;border-radius:6px;flex-shrink:0;object-fit:cover}
 .update-row-main{flex:1;min-width:0}
 .update-row-title{font-weight:700;font-size:.9rem;margin:0 0 2px}
@@ -173,22 +225,21 @@ select.glass-input{cursor:pointer}
 .update-row-meta b{color:var(--gold);font-weight:600}
 .compat-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-bottom:16px}
 @media(max-width:700px){.compat-grid{grid-template-columns:1fr}}
-.compat-card{padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border)}
+.compat-card{padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);animation:slideUp .35s both}
 .compat-card-title{font-weight:700;font-size:.95rem;margin:0 0 6px;color:var(--text)}
 .compat-card-tag{font-size:.7rem;padding:2px 8px;border-radius:999px;background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.28);color:var(--gold);font-weight:600;margin-right:4px}
-.compat-conflict{padding:12px 16px;border-radius:var(--r-sm);background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8;font-size:.85rem;margin-bottom:8px}
+.compat-conflict{padding:12px 16px;border-radius:var(--r-sm);background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8;font-size:.85rem;margin-bottom:8px;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
 .compat-conflict strong{color:#ffd4c8}
-.compat-ok{padding:12px 16px;border-radius:var(--r-sm);background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8;font-size:.85rem;margin-bottom:8px}
+.compat-ok{padding:12px 16px;border-radius:var(--r-sm);background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8;font-size:.85rem;margin-bottom:8px;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.15);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* ================ /TOOLS ================ */
-.coming-soon{min-height:calc(100vh - 220px);display:flex;align-items:center;justify-content:center;padding:60px 20px;text-align:center}
+/* ===== /ИНСТРУМЕНТЫ ===== */
 .site-footer{padding:24px 0 40px;border-top:1px solid rgba(255,255,255,.05);margin-top:24px}
 .footer-inner{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;text-align:center}
 .footer-inner p{color:var(--text-faint);font-size:.82rem;margin:0}
 [hidden]{display:none!important}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--glass-bg-strong);border:1px solid var(--gold);color:var(--text);padding:12px 24px;border-radius:999px;font-size:.9rem;opacity:0;transition:all .25s;z-index:300;pointer-events:none;backdrop-filter:blur(20px)}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px) scale(.9);background:var(--glass-bg-strong);border:1px solid var(--gold);color:var(--text);padding:12px 24px;border-radius:999px;font-size:.9rem;opacity:0;transition:all .3s cubic-bezier(.2,.7,.3,1);z-index:300;pointer-events:none;backdrop-filter:blur(20px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
 </style>
 </head>
 <body>
@@ -310,7 +361,7 @@ select.glass-input{cursor:pointer}
 <div class="builds-head">
 <div class="builds-head-text">
 <h1 class="builds-title">Мои сборки</h1>
-<p class="builds-sub">Сохранённые пресеты. Нажми «Загрузить», чтобы вернуться в мастер.</p>
+<p class="builds-sub">Нажми на сборку, чтобы увидеть её моды. Кнопки справа — загрузить в Пакер или удалить.</p>
 </div>
 <div class="builds-head-actions">
 <button type="button" class="btn btn-primary btn-sm" id="createBuildBtn">➕ Создать сборку</button>
@@ -319,6 +370,11 @@ select.glass-input{cursor:pointer}
 </div>
 </div>
 <div id="buildsList"></div>
+</section>
+
+<section class="wrap detail-page" id="buildDetailPage" hidden>
+<button type="button" class="detail-back" id="detailBackBtn"><span class="arrow">←</span> Назад к сборкам</button>
+<div id="detailContent"></div>
 </section>
 
 <section class="wrap tools-page" id="toolsPage" hidden>
@@ -438,16 +494,12 @@ async function api(path,useCache=true,retries=3){
   }
   throw lastErr||new Error('Не удалось загрузить данные');
 }
-async function apiPost(path,body){
-  const res=await fetch(API_BASE+path,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},UA),body:JSON.stringify(body)});
-  if(!res.ok)throw new Error('Modrinth API: '+res.status);
-  return res.json();
-}
 function esc(s){if(s==null)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fmtCount(n){if(n==null)return'';if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n);}
 function fmtSize(kb){if(!kb)return'';if(kb>=1024)return(kb/1024).toFixed(1)+' МБ';return kb+' КБ';}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2200);}
 function fmtDate(iso){try{const d=new Date(iso);return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return iso;}}
+function fmtDateTime(iso){try{const d=new Date(iso);return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'short',year:'numeric'})+', '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});}catch(e){return iso;}}
 function isModExcludedByEngine(mod){
   if(!state.engine)return false;
   const ex=ENGINE_EXCLUSIONS[state.engine];if(!ex||!ex.length)return false;
@@ -506,13 +558,13 @@ async function importPresetFromFile(file){
 /* ============ NAV ============ */
 function setupNavigation(){
   const links=document.querySelectorAll('.top-nav-link');
-  const main=document.getElementById('mainContent');const builds=document.getElementById('buildsPage');const tools=document.getElementById('toolsPage');
+  const main=document.getElementById('mainContent');const builds=document.getElementById('buildsPage');const detail=document.getElementById('buildDetailPage');const tools=document.getElementById('toolsPage');
   links.forEach(l=>l.addEventListener('click',e=>{
     e.preventDefault();
     const page=l.dataset.page;
     links.forEach(x=>x.classList.remove('is-active'));
     l.classList.add('is-active');
-    main.hidden=true;builds.hidden=true;tools.hidden=true;
+    main.hidden=true;builds.hidden=true;detail.hidden=true;tools.hidden=true;
     if(page==='packer')main.hidden=false;
     else if(page==='builds'){builds.hidden=false;renderBuildsPage();}
     else if(page==='tools'){tools.hidden=false;}
@@ -552,11 +604,12 @@ function goBack(){if(currentStepIndex>0)goToIndex(currentStepIndex-1);}
 
 function renderCategories(){
   const grid=document.getElementById('categoryGrid');grid.innerHTML='';
-  Object.values(CATEGORIES).forEach(cat=>{
+  Object.values(CATEGORIES).forEach((cat,i)=>{
     const btn=document.createElement('button');
     btn.type='button';
     btn.className='option-card'+(state.categoryIds.has(cat.id)?' selected':'');
     btn.dataset.category=cat.id;
+    btn.style.animationDelay=(i*70)+'ms';
     btn.innerHTML=`<span class="option-title">${cat.title}</span><span class="option-tagline">${cat.tagline}</span>`;
     btn.addEventListener('click',()=>{
       const hasEng=!!(cat.engines&&cat.engines.length);
@@ -613,6 +666,7 @@ function renderVersionChips(releases,isFallback){
   releases.forEach((v,i)=>{
     const b=document.createElement('button');b.type='button';
     b.className='version-chip'+(state.gameVersions.includes(v.version)?' active':'')+(i===0&&!isFallback?' latest':'');
+    b.style.animationDelay=Math.min(i*20,300)+'ms';
     b.textContent=v.version;
     b.addEventListener('click',()=>{
       if(state.gameVersions.includes(v.version)){state.gameVersions=state.gameVersions.filter(x=>x!==v.version);b.classList.remove('active');}
@@ -630,11 +684,12 @@ function renderEngines(){
   const cat=getEngineCategory();
   if(!cat){grid.innerHTML='';return;}
   grid.innerHTML='';
-  cat.engines.forEach(id=>{
+  cat.engines.forEach((id,i)=>{
     const eng=ENGINES[id];if(!eng)return;
     const b=document.createElement('button');b.type='button';
     b.className='option-card'+(state.engine===id?' selected':'');
     b.dataset.engine=id;
+    b.style.animationDelay=(i*40)+'ms';
     b.innerHTML=`<span class="option-title">${esc(eng.title)}</span><span class="option-tagline">${esc(eng.tagline)}</span>`;
     b.addEventListener('click',()=>{
       state.engine=id;
@@ -750,7 +805,7 @@ function renderResultsPage(){
   }
   const start=state.currentPage*PAGE_SIZE;
   const pageMods=mods.slice(start,start+PAGE_SIZE);
-  pageMods.forEach(mod=>{
+  pageMods.forEach((mod,i)=>{
     const primaryCatId=mod._primaryCatId;
     const key=primaryCatId+':'+mod.project_id;
     const checked=state.selected.has(key);
@@ -758,6 +813,7 @@ function renderResultsPage(){
     const card=document.createElement('div');
     card.className='result-card'+(checked?' is-checked':'');
     card.dataset.key=key;
+    card.style.animationDelay=(i*40)+'ms';
     const icon=mod.icon_url||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect fill=%22%235C4A1E%22 width=%2240%22 height=%2240%22 rx=%228%22/%3E%3C/svg%3E';
     const libsHtml=dep&&dep.required&&dep.required.length?`<div class="result-libs">+ библиотеки: <strong>${dep.required.map(esc).join(', ')}</strong></div>`:(dep&&dep.sizeKB?`<div class="result-libs">Размер: ${fmtSize(dep.sizeKB)}</div>`:'');
     const badgesHtml=(mod._catIds||[]).map(cid=>{const c=CATEGORIES[cid];return c?`<span class="result-badge">${esc(c.title)}</span>`:'';}).join('');
@@ -884,15 +940,16 @@ function renderBuildsPage(){
     return;
   }
   const grid=document.createElement('div');grid.className='builds-list';
-  presets.forEach(p=>{
-    const card=document.createElement('div');card.className='build-card';
+  presets.forEach((p,i)=>{
+    const card=document.createElement('div');card.className='build-card';card.style.animationDelay=(i*50)+'ms';
+    card.dataset.presetId=p.id;
     const catTitles=(p.categoryIds||[]).map(id=>CATEGORIES[id]?.title).filter(Boolean);
     const engineTitle=p.engine?(ENGINES[p.engine]?.title||p.engine):'—';
     const modsCount=(p.selected||[]).length;
     const modWord=modsCount%10===1&&modsCount%100!==11?'мод':(modsCount%10>=2&&modsCount%10<=4&&(modsCount%100<10||modsCount%100>=20)?'мода':'модов');
     card.innerHTML=`
       <div class="build-card-main">
-        <h3 class="build-card-title">${esc(p.name)} <span class="build-card-date">${esc(fmtDate(p.savedAt))}</span></h3>
+        <h3 class="build-card-title">${esc(p.name)} <span class="build-card-date">${esc(fmtDateTime(p.savedAt))}</span></h3>
         <div class="build-card-meta">
           <span>🧩 <b>${esc(p.loader||'—')}</b></span>
           <span>🎮 <b>${(p.gameVersions||[]).join(', ')||'—'}</b></span>
@@ -907,6 +964,11 @@ function renderBuildsPage(){
         <button class="build-del-btn" data-del="${p.id}">Удалить</button>
       </div>
     `;
+    // Клик по карточке → детали. Кнопки останавливают событие.
+    card.addEventListener('click',e=>{
+      if(e.target.closest('button'))return;
+      openBuildDetail(p.id);
+    });
     grid.appendChild(card);
   });
   list.appendChild(grid);
@@ -919,6 +981,124 @@ function renderBuildsPage(){
     });
   });
 }
+
+/* ============ ДЕТАЛИ СБОРКИ ============ */
+async function openBuildDetail(presetId){
+  const p=getPresetById(presetId);if(!p)return;
+  const builds=document.getElementById('buildsPage');
+  const detail=document.getElementById('buildDetailPage');
+  builds.hidden=true;detail.hidden=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  const content=document.getElementById('detailContent');
+  const modsCount=(p.selected||[]).length;
+  const modWord=modsCount%10===1&&modsCount%100!==11?'мод':(modsCount%10>=2&&modsCount%10<=4&&(modsCount%100<10||modsCount%100>=20)?'мода':'модов');
+  const engineTitle=p.engine?(ENGINES[p.engine]?.title||p.engine):'не выбрано';
+  const catTitles=(p.categoryIds||[]).map(id=>CATEGORIES[id]?.title).filter(Boolean);
+
+  content.innerHTML=`
+    <div class="detail-header">
+      <h1 class="detail-title">${esc(p.name)}</h1>
+      <div class="detail-meta">
+        <span>📅 <b>${esc(fmtDateTime(p.savedAt))}</b></span>
+        <span>🧩 Загрузчик: <b>${esc(p.loader||'—')}</b></span>
+        <span>🎮 Версии: <b>${(p.gameVersions||[]).join(', ')||'—'}</b></span>
+        <span>⚙️ Ядро: <b>${esc(engineTitle)}</b></span>
+      </div>
+      ${catTitles.length?`<div class="build-badges" style="margin-bottom:16px">${catTitles.map(t=>`<span class="build-badge">${esc(t)}</span>`).join('')}</div>`:''}
+      <div class="detail-actions">
+        <button class="btn btn-primary" id="detailLoadBtn">⬇ Загрузить в Пакер</button>
+        <button class="btn btn-ghost" id="detailExportBtn">💾 Скачать .imrovich.json</button>
+        <button class="btn btn-ghost" id="detailDeleteBtn" style="color:var(--danger);border-color:var(--danger)">🗑 Удалить</button>
+      </div>
+      <div class="detail-stats">
+        <span>📦 <b>${modsCount}</b> ${modWord}</span>
+        <span id="detailLoadedCount">⏳ Загружаю данные…</span>
+      </div>
+    </div>
+    <div class="detail-mods" id="detailMods"></div>
+  `;
+
+  document.getElementById('detailLoadBtn').addEventListener('click',()=>loadPreset(p.id));
+  document.getElementById('detailExportBtn').addEventListener('click',()=>exportPresetToFile(p));
+  document.getElementById('detailDeleteBtn').addEventListener('click',()=>{
+    if(confirm(`Удалить сборку «${p.name}»?`)){
+      deletePresetById(p.id);
+      closeBuildDetail();
+      renderBuildsPage();
+      toast('Удалено');
+    }
+  });
+
+  // Загружаем реальные данные модов с Modrinth
+  const projectIds=(p.selected||[]).map(s=>s.project_id).filter(Boolean);
+  const modsBox=document.getElementById('detailMods');
+  if(!projectIds.length){
+    modsBox.innerHTML='<div class="detail-empty">В сборке нет модов.</div>';
+    return;
+  }
+
+  try{
+    // Пакетно по 50
+    let projects=[];
+    for(let i=0;i<projectIds.length;i+=50){
+      const chunk=projectIds.slice(i,i+50);
+      const data=await api(`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`,false);
+      if(Array.isArray(data))projects.push(...data);
+    }
+    // Сортируем в том же порядке, что и в пресете
+    const map=new Map(projects.map(x=>[x.project_id,x]));
+    const sorted=p.selected.map(s=>map.get(s.project_id)).filter(Boolean);
+
+    document.getElementById('detailLoadedCount').innerHTML=`⬇ Всего загрузок: <b>${fmtCount(sorted.reduce((s,x)=>s+(x.downloads||0),0))}</b>`;
+
+    modsBox.innerHTML=sorted.map((m,i)=>{
+      const cat=sorted.find?null:null;
+      const orig=(p.selected||[]).find(s=>s.project_id===m.project_id);
+      const catId=orig?orig.catId:null;
+      const catTitle=catId&&CATEGORIES[catId]?CATEGORIES[catId].title:'';
+      const icon=m.icon_url||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect fill=%22%235C4A1E%22 width=%2248%22 height=%2248%22 rx=%228%22/%3E%3C/svg%3E';
+      return `
+        <div class="detail-mod" style="animation-delay:${Math.min(i*40,500)}ms">
+          <img src="${icon}" alt="" onerror="this.style.display='none'">
+          <div class="detail-mod-info">
+            <p class="detail-mod-title">
+              ${esc(m.title)}
+              ${catTitle?`<span class="result-badge">${esc(catTitle)}</span>`:''}
+            </p>
+            <p class="detail-mod-author">${esc((m.team?m.team:'')||'')}</p>
+            <p class="detail-mod-desc">${esc((m.description||'').slice(0,150))}${(m.description||'').length>150?'…':''}</p>
+            <div class="detail-mod-meta">
+              <span>⬇ ${fmtCount(m.downloads)}</span>
+              <span>♥ ${fmtCount(m.followers)}</span>
+              <span>🔄 ${esc(fmtDate(m.updated))}</span>
+              <a href="https://modrinth.com/mod/${esc(m.slug)}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">🔗 Modrinth</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Если каких-то модов нет на Modrinth (удалены)
+    const missing=(p.selected||[]).filter(s=>!map.has(s.project_id));
+    if(missing.length){
+      modsBox.insertAdjacentHTML('beforeend',
+        `<div class="warn-box" style="margin-top:12px"><strong>Не найдены на Modrinth:</strong> ${missing.map(s=>esc(s.title||s.project_id)).join(', ')}</div>`
+      );
+    }
+  }catch(err){
+    modsBox.innerHTML=`<div class="warn-box"><strong>Ошибка загрузки модов:</strong> ${esc(err.message)}</div>`;
+    document.getElementById('detailLoadedCount').textContent='';
+  }
+}
+function closeBuildDetail(){
+  document.getElementById('buildDetailPage').hidden=true;
+  document.getElementById('buildsPage').hidden=false;
+  renderBuildsPage();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('detailBackBtn').addEventListener('click',closeBuildDetail);
+
 async function loadPreset(id){
   const p=getPresetById(id);if(!p)return;
   switchToTab('packer');
@@ -1033,21 +1213,14 @@ async function collectFilesWithDependencies(rootMods,onProgress){
   return result;
 }
 
-/* ============ WIZARD CLICKS ============ */
 document.getElementById('wizardTrack').addEventListener('click',e=>{
   const b=e.target.closest('[data-action="back"],[data-action="next"]');
   if(!b)return;
   if(b.dataset.action==='back')goBack();else goNext();
 });
 
-/* ============================================================
-   ======================  ИНСТРУМЕНТЫ  ========================
-   ============================================================ */
-
-/* --- Утилиты для всех инструментов --- */
+/* ============ ИНСТРУМЕНТЫ ============ */
 function extractProjectIdsFromMrpack(index){
-  // Из .mrpack достаём project_id из download URL вида:
-  // https://cdn.modrinth.com/data/{project_id}/versions/{version_id}/{filename}
   const ids=new Set();
   (index.files||[]).forEach(f=>{
     (f.downloads||[]).forEach(url=>{
@@ -1065,19 +1238,12 @@ async function readMrpack(file){
   return JSON.parse(text);
 }
 async function readPackFile(file){
-  // Универсальный парсер — поддерживает .mrpack и .imrovich.json
   const name=file.name.toLowerCase();
   if(name.endsWith('.mrpack')){
     const index=await readMrpack(file);
     const projectIds=extractProjectIdsFromMrpack(index);
     if(!projectIds.length)throw new Error('В .mrpack не найдено ни одного мода с Modrinth');
-    return{
-      kind:'mrpack',
-      name:index.name||file.name.replace(/\.mrpack$/i,''),
-      loader:Object.keys(index.dependencies||{}).find(k=>k!=='minecraft')||null,
-      mcVersion:(index.dependencies||{}).minecraft||null,
-      projectIds
-    };
+    return{kind:'mrpack',name:index.name||file.name.replace(/\.mrpack$/i,''),loader:Object.keys(index.dependencies||{}).find(k=>k!=='minecraft')||null,mcVersion:(index.dependencies||{}).minecraft||null,projectIds};
   }
   if(name.endsWith('.json')){
     const text=await file.text();
@@ -1085,31 +1251,19 @@ async function readPackFile(file){
     if(data.format!=='imrovich-preset')throw new Error('Это не .imrovich.json');
     const projectIds=(data.selected||[]).map(s=>s.project_id).filter(Boolean);
     if(!projectIds.length)throw new Error('В файле нет модов');
-    return{
-      kind:'preset',
-      name:data.name||'Без названия',
-      loader:data.loader,
-      mcVersion:(data.gameVersions||[])[0]||null,
-      projectIds
-    };
+    return{kind:'preset',name:data.name||'Без названия',loader:data.loader,mcVersion:(data.gameVersions||[])[0]||null,projectIds};
   }
   throw new Error('Поддерживаются только .mrpack и .imrovich.json');
 }
 async function fetchProjectsByIds(ids){
-  // Пакетно, по 50 за раз (лимит Modrinth)
   const result=[];
   for(let i=0;i<ids.length;i+=50){
     const chunk=ids.slice(i,i+50);
     const url=`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`;
-    try{
-      const data=await api(url,false);
-      if(Array.isArray(data))result.push(...data);
-    }catch(e){console.warn('Ошибка загрузки партии проектов',e);}
+    try{const data=await api(url,false);if(Array.isArray(data))result.push(...data);}catch(e){console.warn('Ошибка партии',e);}
   }
   return result;
 }
-
-/* --- Табы инструментов --- */
 function setupToolsTabs(){
   const tabs=document.querySelectorAll('.tools-tab');
   const panels={check:'toolPanelCheck',updates:'toolPanelUpdates',compat:'toolPanelCompat',convert:'toolPanelConvert'};
@@ -1120,25 +1274,15 @@ function setupToolsTabs(){
     document.getElementById(panels[t.dataset.tool]).hidden=false;
   }));
 }
-
-/* --- Drop-zone helper --- */
-function setupDropZone(zoneId, inputId, onFile){
+function setupDropZone(zoneId,inputId,onFile){
   const zone=document.getElementById(zoneId);
   const input=document.getElementById(inputId);
   zone.addEventListener('click',()=>input.click());
   zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
   zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
-  zone.addEventListener('drop',e=>{
-    e.preventDefault();zone.classList.remove('dragover');
-    const f=e.dataTransfer.files[0];if(f)onFile(f);
-  });
-  input.addEventListener('change',e=>{
-    const f=e.target.files[0];if(f)onFile(f);
-    e.target.value='';
-  });
+  zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f)onFile(f);});
+  input.addEventListener('change',e=>{const f=e.target.files[0];if(f)onFile(f);e.target.value='';});
 }
-
-/* --- 1. ПРОВЕРКА СБОРКИ --- */
 setupDropZone('checkDrop','checkFile',async f=>{
   const box=document.getElementById('checkResults');
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Читаю файл…</p>';
@@ -1146,214 +1290,113 @@ setupDropZone('checkDrop','checkFile',async f=>{
     const pack=await readPackFile(f);
     box.innerHTML='<p class="status-text"><span class="spinner"></span>Получаю данные о '+pack.projectIds.length+' модах…</p>';
     const projects=await fetchProjectsByIds(pack.projectIds);
-    if(projects.length===0)throw new Error('Не удалось загрузить данные о модах');
-
-    box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю совместимость…</p>';
-
+    if(!projects.length)throw new Error('Не удалось загрузить данные');
+    box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю…</p>';
     const slugs=new Set(projects.map(p=>p.slug));
     const issues=[];
-
-    // Конфликты
-    KNOWN_CONFLICTS.forEach(([a,b])=>{
-      if(slugs.has(a)&&slugs.has(b))issues.push({type:'error',icon:'⛔',text:`Конфликт: <strong>${a}</strong> несовместим с <strong>${b}</strong>. Оставь что-то одно.`});
-    });
-
-    // Устаревшие (больше года)
+    KNOWN_CONFLICTS.forEach(([a,b])=>{if(slugs.has(a)&&slugs.has(b))issues.push({type:'error',icon:'⛔',text:`Конфликт: <strong>${a}</strong> несовместим с <strong>${b}</strong>`});});
     const yearAgo=Date.now()-365*24*60*60*1000;
     const old=projects.filter(p=>new Date(p.updated).getTime()<yearAgo);
-    if(old.length>0)issues.push({type:'warn',icon:'⏰',text:`Устаревшие моды (не обновлялись больше года): <strong>${old.map(p=>p.title).join(', ')}</strong>`});
-
-    // Несовместимость с MC-версией
+    if(old.length>0)issues.push({type:'warn',icon:'⏰',text:`Устаревшие (не обновлялись больше года): <strong>${old.map(p=>p.title).join(', ')}</strong>`});
     if(pack.mcVersion){
-      const incompatible=projects.filter(p=>!p.game_versions.includes(pack.mcVersion)&&p.game_versions.length>0);
-      if(incompatible.length>0)issues.push({type:'warn',icon:'🎮',text:`Не заявлена поддержка ${pack.mcVersion}: <strong>${incompatible.map(p=>p.title).join(', ')}</strong>`});
+      const bad=projects.filter(p=>!p.game_versions.includes(pack.mcVersion)&&p.game_versions.length>0);
+      if(bad.length>0)issues.push({type:'warn',icon:'🎮',text:`Не заявлена поддержка ${pack.mcVersion}: <strong>${bad.map(p=>p.title).join(', ')}</strong>`});
     }
-
-    // Несовместимость с загрузчиком
-    const loadersMap={fabric:'fabric',quilt:'quilt',neoforge:'neoforge',forge:'forge','fabric-loader':'fabric','quilt-loader':'quilt','neoforge-loader':'neoforge'};
-    const normLoader=loadersMap[pack.loader]||pack.loader;
-    if(normLoader){
-      const wrongLoader=projects.filter(p=>p.loaders.length>0&&!p.loaders.includes(normLoader));
-      if(wrongLoader.length>0)issues.push({type:'warn',icon:'🧩',text:`Не поддерживают загрузчик <strong>${normLoader}</strong>: ${wrongLoader.map(p=>p.title).join(', ')}`});
-    }
-
-    // Итог
     if(issues.length===0){
-      box.innerHTML=`
-        <div class="ok-box">✅ Проверка пройдена: конфликтов и проблем не найдено. Модов в сборке: <strong>${projects.length}</strong>.</div>
-        ${renderProjectList(projects)}
-      `;
+      box.innerHTML=`<div class="ok-box">✅ Проверка пройдена. Модов: <strong>${projects.length}</strong>.</div>${renderProjectList(projects)}`;
     }else{
-      box.innerHTML=`
-        <div class="warn-box"><strong>Найдено проблем:</strong> ${issues.length}</div>
-        ${issues.map(i=>`<div class="tool-issue ${i.type}"><span class="tool-issue-icon">${i.icon}</span><span>${i.text}</span></div>`).join('')}
-        ${renderProjectList(projects)}
-      `;
+      box.innerHTML=`<div class="warn-box"><strong>Найдено проблем:</strong> ${issues.length}</div>${issues.map(i=>`<div class="tool-issue ${i.type}"><span class="tool-issue-icon">${i.icon}</span><span>${i.text}</span></div>`).join('')}${renderProjectList(projects)}`;
     }
-  }catch(err){
-    box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;
-  }
+  }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
 function renderProjectList(projects){
   return '<div style="margin-top:18px"><p class="hint" style="margin-bottom:10px">Моды в сборке:</p>'+
-    projects.map(p=>`
-      <div class="update-row">
-        <img src="${p.icon_url||''}" alt="" onerror="this.style.display='none'">
-        <div class="update-row-main">
-          <p class="update-row-title">${esc(p.title)}</p>
-          <div class="update-row-meta">
-            <span>⬇ ${fmtCount(p.downloads)}</span>
-            <span>🔄 ${fmtDate(p.updated)}</span>
-            <span>🎮 ${(p.game_versions||[]).slice(-3).join(', ')}</span>
-          </div>
-        </div>
+    projects.map((p,i)=>`<div class="update-row" style="animation-delay:${Math.min(i*30,300)}ms">
+      <img src="${p.icon_url||''}" alt="" onerror="this.style.display='none'">
+      <div class="update-row-main">
+        <p class="update-row-title">${esc(p.title)}</p>
+        <div class="update-row-meta"><span>⬇ ${fmtCount(p.downloads)}</span><span>🔄 ${fmtDate(p.updated)}</span></div>
       </div>
-    `).join('')+
-  '</div>';
+    </div>`).join('')+'</div>';
 }
-
-/* --- 2. ПРОВЕРКА ОБНОВЛЕНИЙ --- */
 setupDropZone('updatesDrop','updatesFile',async f=>{
   const box=document.getElementById('updatesResults');
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Читаю файл…</p>';
   try{
     const pack=await readPackFile(f);
-    box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю информацию о модах…</p>';
+    box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю моды…</p>';
     const projects=await fetchProjectsByIds(pack.projectIds);
     if(!projects.length)throw new Error('Не удалось получить данные');
-
     box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю последние версии…</p>';
-
     const updates=[];
     for(const p of projects){
       try{
-        const versions=await api(`/project/${p.project_id}/version?loaders=${encodeURIComponent(JSON.stringify(p.loaders.length?[p.loaders[0]]:[]))}`);
-        if(versions&&versions.length){
-          const latest=versions[0];
-          updates.push({project:p,latest});
-        }else{
-          updates.push({project:p,latest:null});
-        }
+        const versions=await api(`/project/${p.project_id}/version`);
+        updates.push({project:p,latest:versions&&versions.length?versions[0]:null});
       }catch(e){updates.push({project:p,latest:null});}
     }
-
-    updates.sort((a,b)=>{
-      const ta=a.latest?a.latest.date_published:'';
-      const tb=b.latest?b.latest.date_published:'';
-      return tb.localeCompare(ta);
-    });
-
     box.innerHTML=`
-      <div class="ok-box">Проверено модов: <strong>${updates.length}</strong>. Всё актуально, если дата = последняя на Modrinth.</div>
-      ${updates.map(u=>{
-        const date=u.latest?fmtDate(u.latest.date_published):'неизвестно';
-        const ver=u.latest?u.latest.version_number:'—';
-        const mc=(u.latest?.game_versions||[]).slice(-2).join(', ');
-        return `
-          <div class="update-row">
-            <img src="${u.project.icon_url||''}" alt="" onerror="this.style.display='none'">
-            <div class="update-row-main">
-              <p class="update-row-title">${esc(u.project.title)}</p>
-              <div class="update-row-meta">
-                <span>Последняя: <b>${esc(ver)}</b></span>
-                <span>От: ${esc(date)}</span>
-                <span>🎮 ${esc(mc)}</span>
-              </div>
+      <div class="ok-box">Проверено: <strong>${updates.length}</strong>.</div>
+      ${updates.map((u,i)=>`
+        <div class="update-row" style="animation-delay:${Math.min(i*30,300)}ms">
+          <img src="${u.project.icon_url||''}" alt="" onerror="this.style.display='none'">
+          <div class="update-row-main">
+            <p class="update-row-title">${esc(u.project.title)}</p>
+            <div class="update-row-meta">
+              <span>Последняя: <b>${esc(u.latest?u.latest.version_number:'—')}</b></span>
+              <span>От: ${esc(u.latest?fmtDate(u.latest.date_published):'—')}</span>
+              <span>🎮 ${esc((u.latest?.game_versions||[]).slice(-2).join(', '))}</span>
             </div>
           </div>
-        `;
-      }).join('')}
+        </div>
+      `).join('')}
     `;
-  }catch(err){
-    box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;
-  }
+  }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
-
-/* --- 3. СОВМЕСТИМОСТЬ ПО ССЫЛКАМ --- */
 document.getElementById('compatCheckBtn').addEventListener('click',async()=>{
   const box=document.getElementById('compatResults');
   const raw=document.getElementById('compatInput').value;
   const lines=raw.split(/[\n,]+/).map(s=>s.trim()).filter(Boolean);
   if(lines.length<2){box.innerHTML='<div class="warn-box">Введи минимум 2 ссылки.</div>';return;}
   if(lines.length>10){box.innerHTML='<div class="warn-box">Максимум 10 ссылок.</div>';return;}
-
-  // Извлекаем slug из URL или берём как есть
-  const slugs=lines.map(l=>{
-    const m=l.match(/modrinth\.com\/mod\/([^\/?#]+)/);
-    return m?m[1]:l;
-  });
-
+  const slugs=lines.map(l=>{const m=l.match(/modrinth\.com\/mod\/([^\/?#]+)/);return m?m[1]:l;});
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю моды…</p>';
   try{
     const projects=[];
     for(const s of slugs){
-      try{
-        const p=await api('/project/'+s);
-        projects.push(p);
-      }catch(e){projects.push({error:true,slug:s});}
+      try{const p=await api('/project/'+s);projects.push(p);}
+      catch(e){projects.push({error:true,slug:s});}
     }
-
     const valid=projects.filter(p=>!p.error);
     const invalid=projects.filter(p=>p.error);
-    if(!valid.length){box.innerHTML='<div class="warn-box">Ни один мод не найден на Modrinth.</div>';return;}
-
-    // Конфликты
+    if(!valid.length){box.innerHTML='<div class="warn-box">Ни один мод не найден.</div>';return;}
     const foundSlugs=new Set(valid.map(p=>p.slug));
     const conflicts=[];
-    KNOWN_CONFLICTS.forEach(([a,b])=>{
-      if(foundSlugs.has(a)&&foundSlugs.has(b))conflicts.push([a,b]);
-    });
-
-    // Общие загрузчики (пересечение)
+    KNOWN_CONFLICTS.forEach(([a,b])=>{if(foundSlugs.has(a)&&foundSlugs.has(b))conflicts.push([a,b]);});
     let commonLoaders=valid[0].loaders.slice();
     valid.forEach(p=>{commonLoaders=commonLoaders.filter(l=>p.loaders.includes(l));});
-
-    // Общие MC-версии (пересечение)
     let commonMCs=valid[0].game_versions.slice();
     valid.forEach(p=>{commonMCs=commonMCs.filter(v=>p.game_versions.includes(v));});
-
     box.innerHTML=`
       ${invalid.length?`<div class="tool-issue warn"><span class="tool-issue-icon">⚠️</span><span>Не найдены: <strong>${invalid.map(i=>esc(i.slug)).join(', ')}</strong></span></div>`:''}
-
-      ${conflicts.length
-        ? conflicts.map(([a,b])=>`<div class="compat-conflict"><strong>⛔ Конфликт:</strong> ${esc(a)} ↔ ${esc(b)}</div>`).join('')
-        : '<div class="compat-ok">✅ Явных конфликтов не обнаружено</div>'}
-
+      ${conflicts.length?conflicts.map(([a,b])=>`<div class="compat-conflict"><strong>⛔ Конфликт:</strong> ${esc(a)} ↔ ${esc(b)}</div>`).join(''):'<div class="compat-ok">✅ Явных конфликтов нет</div>'}
       <div class="compat-grid" style="margin-top:14px">
         <div class="compat-card">
           <p class="compat-card-title">🧩 Общие загрузчики</p>
-          ${commonLoaders.length?commonLoaders.map(l=>`<span class="compat-card-tag">${esc(l)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих загрузчиков</span>'}
+          ${commonLoaders.length?commonLoaders.map(l=>`<span class="compat-card-tag">${esc(l)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих</span>'}
         </div>
         <div class="compat-card">
-          <p class="compat-card-title">🎮 Общие версии Minecraft</p>
-          ${commonMCs.length?commonMCs.slice(0,8).map(v=>`<span class="compat-card-tag">${esc(v)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих версий</span>'}
+          <p class="compat-card-title">🎮 Общие версии MC</p>
+          ${commonMCs.length?commonMCs.slice(0,8).map(v=>`<span class="compat-card-tag">${esc(v)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих</span>'}
         </div>
       </div>
-
-      <p class="hint" style="margin-top:14px;margin-bottom:10px">Моды:</p>
-      ${valid.map(p=>`
-        <div class="update-row">
-          <img src="${p.icon_url||''}" alt="" onerror="this.style.display='none'">
-          <div class="update-row-main">
-            <p class="update-row-title">${esc(p.title)}</p>
-            <div class="update-row-meta">
-              <span>🧩 ${(p.loaders||[]).join(', ')}</span>
-              <span>🎮 ${(p.game_versions||[]).slice(-3).join(', ')}</span>
-            </div>
-          </div>
-        </div>
-      `).join('')}
     `;
-  }catch(err){
-    box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;
-  }
+  }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
 document.getElementById('compatClearBtn').addEventListener('click',()=>{
   document.getElementById('compatInput').value='';
   document.getElementById('compatResults').innerHTML='';
 });
-
-/* --- 4. КОНВЕРТЕР .MRPACK → .imrovich.json --- */
 setupDropZone('convertDrop','convertFile',async f=>{
   const box=document.getElementById('convertResults');
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Читаю .mrpack…</p>';
@@ -1361,27 +1404,16 @@ setupDropZone('convertDrop','convertFile',async f=>{
     const index=await readMrpack(f);
     const projectIds=extractProjectIdsFromMrpack(index);
     if(!projectIds.length)throw new Error('Не удалось извлечь моды');
-
     box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю данные о ${projectIds.length} модах…</p>';
     const projects=await fetchProjectsByIds(projectIds);
-
     const loaderKey=Object.keys(index.dependencies||{}).find(k=>k!=='minecraft')||'fabric';
     const loaderMap={'fabric-loader':'fabric','quilt-loader':'quilt','neoforge-loader':'neoforge','forge':'forge'};
     const loader=loaderMap[loaderKey]||loaderKey.replace(/-loader$/,'');
     const mcVersion=(index.dependencies||{}).minecraft||'1.20.1';
-
-    // Определяем категории по совпадению с нашими (по категориям проекта)
     const preset={
-      format:'imrovich-preset',
-      version:2,
-      name:index.name||f.name.replace(/\.mrpack$/i,'')||'Импортированная сборка',
-      savedAt:new Date().toISOString(),
-      loader:loader,
-      gameVersions:[mcVersion],
-      engine:null,
-      categoryIds:[],
+      format:'imrovich-preset',version:2,name:index.name||f.name.replace(/\.mrpack$/i,'')||'Импортированная сборка',
+      savedAt:new Date().toISOString(),loader:loader,gameVersions:[mcVersion],engine:null,categoryIds:[],
       selected:projects.map(p=>{
-        // Определяем нашу категорию по тегам Modrinth
         let catId='qol';
         const tags=(p.categories||[]).map(c=>c.toLowerCase());
         if(tags.includes('optimization'))catId='optimization';
@@ -1389,31 +1421,37 @@ setupDropZone('convertDrop','convertFile',async f=>{
         return{catId,project_id:p.project_id,slug:p.slug,title:p.title};
       })
     };
-
-    // Определяем категории (какие есть в сборке)
-    const usedCats=new Set(preset.selected.map(s=>s.catId));
-    preset.categoryIds=[...usedCats];
-
+    preset.categoryIds=[...new Set(preset.selected.map(s=>s.catId))];
     const blob=new Blob([JSON.stringify(preset,null,2)],{type:'application/json'});
     const url=URL.createObjectURL(blob);
     const safeName=preset.name.replace(/[\\/:*?"<>|]+/g,'_').replace(/\s+/g,'_').slice(0,60)||'build';
-
     box.innerHTML=`
-      <div class="ok-box">✅ Конвертация завершена! Модов: <strong>${preset.selected.length}</strong>, загрузчик: <strong>${esc(loader)}</strong>, MC: <strong>${esc(mcVersion)}</strong>.</div>
+      <div class="ok-box">✅ Конвертация! Модов: <strong>${preset.selected.length}</strong>, загрузчик: <strong>${esc(loader)}</strong>, MC: <strong>${esc(mcVersion)}</strong>.</div>
       <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-        <a href="${url}" download="${safeName}.imrovich.json" class="btn btn-primary">💾 Скачать .imrovich.json</a>
+        <a href="${url}" download="${safeName}.imrovich.json" class="btn btn-primary">💾 Скачать</a>
         <button type="button" class="btn btn-ghost" id="convertAddToPresetsBtn">➕ Добавить в «Сборки»</button>
       </div>
     `;
-
     document.getElementById('convertAddToPresetsBtn').addEventListener('click',()=>{
       const p={...preset,id:Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
       addPreset(p);
       toast(`«${p.name}» добавлена в Сборки`);
     });
-  }catch(err){
-    box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;
-  }
+  }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
+});
+
+/* ============ RIPPLE для всех кнопок ============ */
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.btn, .build-load-btn, .build-export-btn, .build-del-btn, .top-nav-link, .option-card, .pager-btn, .results-tab, .tools-tab');
+  if(!btn)return;
+  const rect=btn.getBoundingClientRect();
+  const circle=document.createElement('span');
+  const size=Math.max(rect.width,rect.height);
+  circle.style.cssText=`position:absolute;border-radius:50%;background:rgba(255,255,255,.25);pointer-events:none;transform:translate(-50%,-50%) scale(0);width:${size}px;height:${size}px;left:${e.clientX-rect.left}px;top:${e.clientY-rect.top}px;animation:ripple .6s ease-out`;
+  if(getComputedStyle(btn).position==='static')btn.style.position='relative';
+  if(getComputedStyle(btn).overflow!=='hidden')btn.style.overflow='hidden';
+  btn.appendChild(circle);
+  setTimeout(()=>circle.remove(),650);
 });
 
 /* ============ INIT ============ */
