@@ -20,18 +20,13 @@ a{color:var(--gold)}
 .f1{left:10%;--fs:3px}.f2{left:28%;--fs:2.5px}.f3{left:50%;--fs:3.5px}.f4{left:70%;--fs:2.5px}.f5{left:88%;--fs:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 .glass{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px) saturate(140%);box-shadow:var(--glass-shadow)}
-/* ===== АНИМАЦИИ ===== */
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
 @keyframes pageIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
 @keyframes glowPulse{0%,100%{box-shadow:0 0 0 rgba(224,168,0,0)}50%{box-shadow:0 0 24px rgba(224,168,0,.35)}}
 @keyframes ripple{to{transform:scale(4);opacity:0}}
-@keyframes cardHoverLift{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
-@keyframes spinIcon{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes shineSweep{0%{left:-100%}60%,100%{left:120%}}
 @keyframes popIn{0%{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
-/* ===== /АНИМАЦИИ ===== */
+@keyframes shineSweep{0%{left:-100%}60%,100%{left:120%}}
 .site-header{padding:14px 0 0;position:sticky;top:14px;z-index:50}
 .site-header .wrap{max-width:1300px}
 .header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:12px 20px;border-radius:var(--r-lg);background:var(--glass-bg-strong);border:1.5px solid var(--glass-border);backdrop-filter:blur(20px) saturate(140%);box-shadow:var(--glass-shadow)}
@@ -75,9 +70,7 @@ a{color:var(--gold)}
 .option-tagline{font-size:.82rem;color:var(--text-dim);line-height:1.4}
 .option-head{display:flex;align-items:center;gap:8px}
 .step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px;flex-wrap:wrap}
-.btn{padding:12px 28px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.2,.7,.3,1);border:none;font-family:inherit;position:relative;overflow:hidden}
-.btn::after{content:'';position:absolute;top:50%;left:50%;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none}
-.btn:active::after{animation:ripple .5s ease-out}
+.btn{padding:12px 28px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s cubic-bezier(.2,.7,.3,1);border:none;font-family:inherit;position:relative;overflow:hidden;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn-primary{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;box-shadow:0 4px 14px rgba(224,168,0,.35)}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 .btn-primary:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,168,0,.5)}
@@ -97,6 +90,7 @@ select.glass-input{cursor:pointer}
 .version-chip.latest::after{content:'★';margin-left:5px;font-size:.7rem;opacity:.85}
 .results-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
 .hint{color:var(--text-faint);font-size:.8rem;margin:0}
+.hint kbd{background:rgba(0,0,0,.4);border:1px solid var(--glass-border);padding:1px 6px;border-radius:4px;font-family:inherit;font-size:.85em;color:var(--gold)}
 .results-count{font-size:.85rem;color:var(--text-dim);margin:0 0 14px}
 .results-count strong{color:var(--gold);font-weight:700}
 .results-toolbar{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
@@ -163,13 +157,13 @@ select.glass-input{cursor:pointer}
 .build-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .build-badge{font-size:.72rem;padding:3px 10px;border-radius:999px;background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.28);color:var(--gold);font-weight:600}
 .build-card-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:relative;z-index:2}
-.build-load-btn{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border:none;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden}
+.build-load-btn{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border:none;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s cubic-bezier(.2,.7,.3,1)}
 .build-load-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(224,168,0,.5)}
 .build-export-btn{background:transparent;color:var(--gold);border:1px solid var(--glass-border-strong);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s}
 .build-export-btn:hover{background:rgba(224,168,0,.12);transform:translateY(-2px)}
 .build-del-btn{background:transparent;color:var(--text-faint);border:1px solid var(--glass-border);padding:10px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s}
 .build-del-btn:hover{color:var(--danger);border-color:var(--danger);transform:translateY(-2px)}
-/* ===== ДЕТАЛИ СБОРКИ ===== */
+/* ===== СТРАНИЦЫ ДЕТАЛЕЙ ===== */
 .detail-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
 .detail-back{margin-bottom:22px;display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-weight:700;font-family:inherit;transition:all .25s cubic-bezier(.2,.7,.3,1)}
 .detail-back:hover{border-color:var(--gold);color:var(--gold);transform:translateX(-4px)}
@@ -184,7 +178,7 @@ select.glass-input{cursor:pointer}
 .detail-stats span{display:inline-flex;align-items:center;gap:6px}
 .detail-stats b{color:var(--gold);font-weight:600}
 .detail-mods{display:grid;gap:10px}
-.detail-mod{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);align-items:flex-start;transition:all .25s cubic-bezier(.2,.7,.3,1);animation:slideUp .35s cubic-bezier(.2,.7,.3,1) both}
+.detail-mod{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);align-items:flex-start;transition:all .25s cubic-bezier(.2,.7,.3,1);animation:slideUp .35s cubic-bezier(.2,.7,.3,1) both;cursor:context-menu}
 .detail-mod:hover{border-color:var(--glass-border-strong);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.35);background:var(--glass-bg)}
 .detail-mod img{width:48px;height:48px;border-radius:8px;flex-shrink:0;object-fit:cover;image-rendering:pixelated;transition:transform .3s}
 .detail-mod:hover img{transform:scale(1.1)}
@@ -194,17 +188,81 @@ select.glass-input{cursor:pointer}
 .detail-mod-desc{font-size:.82rem;color:var(--text-dim);margin:0;line-height:1.4}
 .detail-mod-meta{display:flex;gap:14px;font-size:.75rem;color:var(--text-faint);margin-top:6px;flex-wrap:wrap}
 .detail-empty{text-align:center;padding:60px 20px;color:var(--text-faint);animation:slideUp .4s both}
-/* ===== /ДЕТАЛИ ===== */
+/* ===== КАРТОЧКА МОДА (Modrinth-style) ===== */
+.mod-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
+.mod-hero{display:flex;gap:22px;padding:26px;border-radius:var(--r-lg);background:var(--glass-bg-strong);border:1.5px solid var(--glass-border);backdrop-filter:blur(20px);box-shadow:var(--glass-shadow);margin-bottom:22px;flex-wrap:wrap;align-items:flex-start;animation:slideUp .45s cubic-bezier(.2,.7,.3,1) both}
+.mod-hero-icon{width:96px;height:96px;border-radius:16px;flex-shrink:0;object-fit:cover;image-rendering:pixelated;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.mod-hero-info{flex:1;min-width:240px}
+.mod-hero-cat{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin:0 0 6px}
+.mod-hero-title{font-family:var(--font-display);font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:700;margin:0 0 6px;color:var(--text);line-height:1.15}
+.mod-hero-author{font-size:.9rem;color:var(--text-dim);margin:0 0 14px}
+.mod-hero-author b{color:var(--gold);font-weight:600}
+.mod-hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.mod-hero-tag{font-size:.72rem;padding:3px 10px;border-radius:999px;background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.28);color:var(--gold);font-weight:600}
+.mod-hero-tag.loader{background:rgba(127,199,127,.1);border-color:rgba(127,199,127,.3);color:#c8e6c8}
+.mod-hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.mod-hero-stats{display:flex;gap:22px;flex-wrap:wrap;font-size:.85rem;color:var(--text-dim);padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
+.mod-hero-stats span{display:inline-flex;align-items:center;gap:6px}
+.mod-hero-stats b{color:var(--gold);font-weight:700}
+.mod-section{padding:24px;border-radius:var(--r-lg);background:var(--glass-bg-soft);border:1px solid var(--glass-border);margin-bottom:20px;animation:slideUp .4s cubic-bezier(.2,.7,.3,1) both}
+.mod-section-title{font-family:var(--font-display);font-size:1.15rem;margin:0 0 14px;color:var(--text)}
+.mod-gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.mod-gallery figure{margin:0;border-radius:12px;overflow:hidden;position:relative;background:rgba(0,0,0,.3)}
+.mod-gallery img{width:100%;display:block;border-radius:12px;transition:transform .3s}
+.mod-gallery img:hover{transform:scale(1.02)}
+.mod-gallery figcaption{padding:8px 10px;font-size:.75rem;color:var(--text-dim)}
+.mod-body{font-size:.92rem;line-height:1.65;color:var(--text-dim);word-wrap:break-word;overflow-wrap:anywhere}
+.mod-body img{max-width:100%;height:auto;border-radius:8px;margin:8px 0}
+.mod-body a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(224,168,0,.3)}
+.mod-body a:hover{text-decoration-color:var(--gold)}
+.mod-body h1,.mod-body h2,.mod-body h3,.mod-body h4{font-family:var(--font-display);color:var(--text);margin:20px 0 10px;line-height:1.3}
+.mod-body h1{font-size:1.4rem}
+.mod-body h2{font-size:1.2rem}
+.mod-body h3{font-size:1.05rem}
+.mod-body p{margin:0 0 12px}
+.mod-body ul,.mod-body ol{margin:0 0 12px;padding-left:22px}
+.mod-body li{margin:4px 0}
+.mod-body code{background:rgba(0,0,0,.45);padding:2px 6px;border-radius:4px;font-size:.85em;color:var(--gold);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.mod-body pre{background:rgba(0,0,0,.45);padding:14px;border-radius:10px;overflow-x:auto;margin:0 0 14px;border:1px solid rgba(255,255,255,.05)}
+.mod-body pre code{background:none;padding:0;color:var(--text)}
+.mod-body blockquote{border-left:3px solid var(--gold);padding:4px 14px;margin:0 0 14px;color:var(--text-faint)}
+.mod-body hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:20px 0}
+.mod-body table{border-collapse:collapse;width:100%;margin:0 0 14px;font-size:.85rem}
+.mod-body th,.mod-body td{border:1px solid rgba(255,255,255,.1);padding:6px 10px;text-align:left}
+.mod-body th{background:rgba(0,0,0,.3);color:var(--text)}
+.mod-version-list{display:grid;gap:10px}
+.mod-version{padding:12px 14px;border-radius:var(--r-sm);background:rgba(0,0,0,.25);border:1px solid var(--glass-border);transition:all .25s;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.mod-version:hover{border-color:var(--glass-border-strong);transform:translateY(-2px)}
+.mod-version-main{flex:1;min-width:200px}
+.mod-version-name{font-weight:700;font-size:.9rem;margin:0 0 4px;color:var(--text)}
+.mod-version-meta{font-size:.76rem;color:var(--text-faint);display:flex;gap:12px;flex-wrap:wrap}
+.mod-version-meta b{color:var(--gold);font-weight:600}
+.mod-version-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.mod-version-tag{font-size:.68rem;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.05);color:var(--text-dim);border:1px solid rgba(255,255,255,.08)}
+.mod-deps{display:grid;gap:10px}
+.mod-dep{display:flex;gap:10px;padding:10px 12px;border-radius:var(--r-sm);background:rgba(0,0,0,.25);border:1px solid var(--glass-border);align-items:center;cursor:context-menu}
+.mod-dep img{width:32px;height:32px;border-radius:6px;flex-shrink:0;object-fit:cover}
+.mod-dep-main{flex:1;min-width:0}
+.mod-dep-title{font-weight:700;font-size:.85rem;margin:0}
+.mod-dep-type{font-size:.7rem;padding:2px 8px;border-radius:999px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;flex-shrink:0}
+.mod-dep-type.required{background:rgba(224,104,79,.15);color:#ffb9a8;border:1px solid rgba(224,104,79,.4)}
+.mod-dep-type.optional{background:rgba(224,168,0,.1);color:#ffe6a8;border:1px solid rgba(224,168,0,.35)}
+.mod-dep-type.incompatible{background:rgba(200,50,50,.15);color:#ffaaaa;border:1px solid rgba(200,50,50,.4)}
+.mod-dep-type.embedded{background:rgba(127,199,127,.1);color:#c8e6c8;border:1px solid rgba(127,199,127,.35)}
+.mod-links{display:flex;gap:8px;flex-wrap:wrap}
+.mod-link{padding:8px 14px;border-radius:999px;background:rgba(0,0,0,.25);border:1px solid var(--glass-border);color:var(--text-dim);text-decoration:none;font-size:.82rem;font-weight:600;transition:all .25s}
+.mod-link:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+/* ===== /КАРТОЧКА МОДА ===== */
 /* ===== ИНСТРУМЕНТЫ ===== */
 .tools-page{padding:40px 0 60px;min-height:calc(100vh - 220px);animation:pageIn .4s cubic-bezier(.2,.7,.3,1) both}
 .tools-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.tools-tab{padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-family:inherit;font-weight:700;transition:all .25s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden}
+.tools-tab{padding:10px 20px;border-radius:999px;border:1px solid var(--glass-border);background:var(--glass-bg-soft);color:var(--text-dim);cursor:pointer;font-size:.88rem;font-family:inherit;font-weight:700;transition:all .25s cubic-bezier(.2,.7,.3,1)}
 .tools-tab:hover{border-color:var(--glass-border-strong);color:var(--text);transform:translateY(-2px)}
 .tools-tab.active{background:linear-gradient(135deg,var(--amber),var(--gold));color:#1a1206;border-color:var(--gold);box-shadow:0 4px 12px rgba(224,168,0,.3)}
 .tool-panel{padding:24px;border-radius:var(--r-md);background:var(--glass-bg-soft);border:1px solid var(--glass-border);animation:slideUp .4s cubic-bezier(.2,.7,.3,1) both}
 .tool-panel h3{font-family:var(--font-display);margin:0 0 8px;font-size:1.2rem}
 .tool-panel p.tool-desc{color:var(--text-dim);font-size:.88rem;margin:0 0 20px}
-.drop-zone{border:2px dashed var(--glass-border-strong);border-radius:var(--r-md);padding:36px 20px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.2,.7,.3,1);margin-bottom:18px;background:rgba(255,255,255,.02);position:relative;overflow:hidden}
+.drop-zone{border:2px dashed var(--glass-border-strong);border-radius:var(--r-md);padding:36px 20px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.2,.7,.3,1);margin-bottom:18px;background:rgba(255,255,255,.02)}
 .drop-zone:hover{border-color:var(--gold);background:rgba(224,168,0,.06);transform:scale(1.01)}
 .drop-zone.dragover{border-color:var(--gold);background:rgba(224,168,0,.1);transform:scale(1.02);box-shadow:0 0 30px rgba(224,168,0,.3)}
 .drop-zone-icon{font-size:2.4rem;margin-bottom:10px;opacity:.7;display:inline-block;transition:transform .3s}
@@ -229,17 +287,19 @@ select.glass-input{cursor:pointer}
 .compat-card-title{font-weight:700;font-size:.95rem;margin:0 0 6px;color:var(--text)}
 .compat-card-tag{font-size:.7rem;padding:2px 8px;border-radius:999px;background:rgba(224,168,0,.1);border:1px solid rgba(224,168,0,.28);color:var(--gold);font-weight:600;margin-right:4px}
 .compat-conflict{padding:12px 16px;border-radius:var(--r-sm);background:rgba(224,104,79,.12);border:1px solid rgba(224,104,79,.4);color:#ffb9a8;font-size:.85rem;margin-bottom:8px;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
-.compat-conflict strong{color:#ffd4c8}
 .compat-ok{padding:12px 16px;border-radius:var(--r-sm);background:rgba(127,199,127,.1);border:1px solid rgba(127,199,127,.35);color:#c8e6c8;font-size:.85rem;margin-bottom:8px;animation:popIn .35s cubic-bezier(.2,.7,.3,1) both}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.15);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* ===== /ИНСТРУМЕНТЫ ===== */
 .site-footer{padding:24px 0 40px;border-top:1px solid rgba(255,255,255,.05);margin-top:24px}
 .footer-inner{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;text-align:center}
 .footer-inner p{color:var(--text-faint);font-size:.82rem;margin:0}
 [hidden]{display:none!important}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px) scale(.9);background:var(--glass-bg-strong);border:1px solid var(--gold);color:var(--text);padding:12px 24px;border-radius:999px;font-size:.9rem;opacity:0;transition:all .3s cubic-bezier(.2,.7,.3,1);z-index:300;pointer-events:none;backdrop-filter:blur(20px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+/* Хинт-подсказка справа снизу */
+.ctx-hint{position:fixed;bottom:20px;right:20px;padding:8px 14px;border-radius:999px;background:var(--glass-bg-strong);border:1px solid var(--glass-border);font-size:.78rem;color:var(--text-dim);backdrop-filter:blur(20px);z-index:40;pointer-events:none;opacity:0;transition:opacity .3s}
+.ctx-hint.show{opacity:1}
+.ctx-hint kbd{background:rgba(0,0,0,.4);border:1px solid var(--glass-border);padding:1px 6px;border-radius:4px;font-family:inherit;font-size:.85em;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -271,7 +331,7 @@ select.glass-input{cursor:pointer}
 <section class="hero">
 <span class="eyebrow">Личный сборщик модов</span>
 <h1>Собери свою сборку<br>за <span class="accent">пару кликов</span></h1>
-<p class="hero-sub">Один поиск по всем категориям сразу — без дублей.</p>
+<p class="hero-sub">Один поиск по всем категориям сразу — без дублей. Правый клик по моду — открыть его карточку.</p>
 </section>
 
 <section class="wizard-shell glass">
@@ -315,7 +375,7 @@ select.glass-input{cursor:pointer}
 <div class="wizard-step" data-step="results" hidden>
 <div class="results-head">
 <h2 class="step-title">Выбери моды</h2>
-<p class="hint">Все моды из выбранных категорий в одном списке, без дублей.</p>
+<p class="hint">Все моды из категорий в одном списке. <kbd>ПКМ</kbd> по моду — открыть подробную карточку.</p>
 </div>
 <div id="conflictBox"></div>
 <div class="results-toolbar">
@@ -361,7 +421,7 @@ select.glass-input{cursor:pointer}
 <div class="builds-head">
 <div class="builds-head-text">
 <h1 class="builds-title">Мои сборки</h1>
-<p class="builds-sub">Нажми на сборку, чтобы увидеть её моды. Кнопки справа — загрузить в Пакер или удалить.</p>
+<p class="builds-sub">Нажми на сборку, чтобы увидеть её моды. ПКМ по моду в деталях — открыть его карточку.</p>
 </div>
 <div class="builds-head-actions">
 <button type="button" class="btn btn-primary btn-sm" id="createBuildBtn">➕ Создать сборку</button>
@@ -375,6 +435,11 @@ select.glass-input{cursor:pointer}
 <section class="wrap detail-page" id="buildDetailPage" hidden>
 <button type="button" class="detail-back" id="detailBackBtn"><span class="arrow">←</span> Назад к сборкам</button>
 <div id="detailContent"></div>
+</section>
+
+<section class="wrap mod-page" id="modDetailPage" hidden>
+<button type="button" class="detail-back" id="modDetailBackBtn"><span class="arrow">←</span> Назад</button>
+<div id="modDetailContent"></div>
 </section>
 
 <section class="wrap tools-page" id="toolsPage" hidden>
@@ -439,8 +504,10 @@ select.glass-input{cursor:pointer}
 </footer>
 
 <div class="toast" id="toast"></div>
+<div class="ctx-hint" id="ctxHint">ПКМ по моду → открыть карточку</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
 const API_BASE='https://api.modrinth.com/v2';
 const UA={'User-Agent':'IMROVICHPacker/2.0 (modpack builder; https://aestmc.ru)'};
@@ -471,7 +538,7 @@ const KNOWN_CONFLICTS=[['sodium','optifine'],['sodium','embeddium'],['iris','opt
 const ENGINE_EXCLUSIONS={vulkanmod:['sodium','iris','embeddium','oculus','rubidium','magnesium','sodium-extra','nvidium','reeses-sodium-options']};
 const FALLBACK_VERSIONS=['1.21.1','1.21','1.20.6','1.20.4','1.20.2','1.20.1','1.20','1.19.4','1.19.2','1.18.2','1.17.1','1.16.5'];
 
-const state={categoryIds:new Set(),loader:null,engine:null,gameVersions:[],combinedMods:[],selected:new Set(),depsCache:{},currentPage:0,searchQuery:'',sortBy:'downloads',maxSizeMB:200};
+const state={categoryIds:new Set(),loader:null,engine:null,gameVersions:[],combinedMods:[],selected:new Set(),depsCache:{},currentPage:0,searchQuery:'',sortBy:'downloads',maxSizeMB:200,modDetailReturnTo:null};
 const PAGE_SIZE=8;
 const CACHE_PREFIX='imr_cache_';
 const PRESETS_KEY='imr_presets';
@@ -505,6 +572,16 @@ function isModExcludedByEngine(mod){
   const ex=ENGINE_EXCLUSIONS[state.engine];if(!ex||!ex.length)return false;
   const slug=(mod.slug||'').toLowerCase();const title=(mod.title||'').toLowerCase();
   return ex.some(e=>{if(slug===e||title===e)return true;if(slug.startsWith(e+'-')||slug.startsWith(e+'_'))return true;const fw=title.split(/\s+/)[0];if(fw===e)return true;return false;});
+}
+function markdownToHtml(md){
+  if(!md)return'<p style="color:var(--text-faint)">Описание отсутствует.</p>';
+  try{
+    if(window.marked){
+      marked.setOptions({breaks:true,gfm:true,headerIds:false,mangle:false});
+      return marked.parse(md);
+    }
+  }catch(e){console.warn('marked error',e);}
+  return '<pre style="white-space:pre-wrap;font-family:inherit">'+esc(md)+'</pre>';
 }
 
 /* ============ PRESETS ============ */
@@ -556,18 +633,23 @@ async function importPresetFromFile(file){
 }
 
 /* ============ NAV ============ */
+const ALL_PAGES=['mainContent','buildsPage','buildDetailPage','modDetailPage','toolsPage'];
+function showPage(id){
+  ALL_PAGES.forEach(p=>{
+    const el=document.getElementById(p);
+    if(el)el.hidden=(p!==id);
+  });
+}
 function setupNavigation(){
   const links=document.querySelectorAll('.top-nav-link');
-  const main=document.getElementById('mainContent');const builds=document.getElementById('buildsPage');const detail=document.getElementById('buildDetailPage');const tools=document.getElementById('toolsPage');
   links.forEach(l=>l.addEventListener('click',e=>{
     e.preventDefault();
     const page=l.dataset.page;
     links.forEach(x=>x.classList.remove('is-active'));
     l.classList.add('is-active');
-    main.hidden=true;builds.hidden=true;detail.hidden=true;tools.hidden=true;
-    if(page==='packer')main.hidden=false;
-    else if(page==='builds'){builds.hidden=false;renderBuildsPage();}
-    else if(page==='tools'){tools.hidden=false;}
+    if(page==='packer')showPage('mainContent');
+    else if(page==='builds'){showPage('buildsPage');renderBuildsPage();}
+    else if(page==='tools'){showPage('toolsPage');}
     window.scrollTo({top:0,behavior:'smooth'});
   }));
 }
@@ -813,6 +895,8 @@ function renderResultsPage(){
     const card=document.createElement('div');
     card.className='result-card'+(checked?' is-checked':'');
     card.dataset.key=key;
+    card.dataset.projectId=mod.project_id;
+    card.dataset.modSlug=mod.slug||'';
     card.style.animationDelay=(i*40)+'ms';
     const icon=mod.icon_url||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect fill=%22%235C4A1E%22 width=%2240%22 height=%2240%22 rx=%228%22/%3E%3C/svg%3E';
     const libsHtml=dep&&dep.required&&dep.required.length?`<div class="result-libs">+ библиотеки: <strong>${dep.required.map(esc).join(', ')}</strong></div>`:(dep&&dep.sizeKB?`<div class="result-libs">Размер: ${fmtSize(dep.sizeKB)}</div>`:'');
@@ -964,7 +1048,6 @@ function renderBuildsPage(){
         <button class="build-del-btn" data-del="${p.id}">Удалить</button>
       </div>
     `;
-    // Клик по карточке → детали. Кнопки останавливают событие.
     card.addEventListener('click',e=>{
       if(e.target.closest('button'))return;
       openBuildDetail(p.id);
@@ -985,17 +1068,13 @@ function renderBuildsPage(){
 /* ============ ДЕТАЛИ СБОРКИ ============ */
 async function openBuildDetail(presetId){
   const p=getPresetById(presetId);if(!p)return;
-  const builds=document.getElementById('buildsPage');
-  const detail=document.getElementById('buildDetailPage');
-  builds.hidden=true;detail.hidden=false;
+  showPage('buildDetailPage');
   window.scrollTo({top:0,behavior:'smooth'});
-
   const content=document.getElementById('detailContent');
   const modsCount=(p.selected||[]).length;
   const modWord=modsCount%10===1&&modsCount%100!==11?'мод':(modsCount%10>=2&&modsCount%10<=4&&(modsCount%100<10||modsCount%100>=20)?'мода':'модов');
   const engineTitle=p.engine?(ENGINES[p.engine]?.title||p.engine):'не выбрано';
   const catTitles=(p.categoryIds||[]).map(id=>CATEGORIES[id]?.title).filter(Boolean);
-
   content.innerHTML=`
     <div class="detail-header">
       <h1 class="detail-title">${esc(p.name)}</h1>
@@ -1014,72 +1093,52 @@ async function openBuildDetail(presetId){
       <div class="detail-stats">
         <span>📦 <b>${modsCount}</b> ${modWord}</span>
         <span id="detailLoadedCount">⏳ Загружаю данные…</span>
+        <span style="color:var(--text-faint);font-size:.78rem">ПКМ по моду — открыть карточку</span>
       </div>
     </div>
     <div class="detail-mods" id="detailMods"></div>
   `;
-
   document.getElementById('detailLoadBtn').addEventListener('click',()=>loadPreset(p.id));
   document.getElementById('detailExportBtn').addEventListener('click',()=>exportPresetToFile(p));
   document.getElementById('detailDeleteBtn').addEventListener('click',()=>{
-    if(confirm(`Удалить сборку «${p.name}»?`)){
-      deletePresetById(p.id);
-      closeBuildDetail();
-      renderBuildsPage();
-      toast('Удалено');
-    }
+    if(confirm(`Удалить сборку «${p.name}»?`)){deletePresetById(p.id);showPage('buildsPage');renderBuildsPage();toast('Удалено');}
   });
-
-  // Загружаем реальные данные модов с Modrinth
   const projectIds=(p.selected||[]).map(s=>s.project_id).filter(Boolean);
   const modsBox=document.getElementById('detailMods');
-  if(!projectIds.length){
-    modsBox.innerHTML='<div class="detail-empty">В сборке нет модов.</div>';
-    return;
-  }
-
+  if(!projectIds.length){modsBox.innerHTML='<div class="detail-empty">В сборке нет модов.</div>';return;}
   try{
-    // Пакетно по 50
     let projects=[];
     for(let i=0;i<projectIds.length;i+=50){
       const chunk=projectIds.slice(i,i+50);
       const data=await api(`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`,false);
       if(Array.isArray(data))projects.push(...data);
     }
-    // Сортируем в том же порядке, что и в пресете
     const map=new Map(projects.map(x=>[x.project_id,x]));
     const sorted=p.selected.map(s=>map.get(s.project_id)).filter(Boolean);
-
     document.getElementById('detailLoadedCount').innerHTML=`⬇ Всего загрузок: <b>${fmtCount(sorted.reduce((s,x)=>s+(x.downloads||0),0))}</b>`;
-
     modsBox.innerHTML=sorted.map((m,i)=>{
-      const cat=sorted.find?null:null;
       const orig=(p.selected||[]).find(s=>s.project_id===m.project_id);
       const catId=orig?orig.catId:null;
       const catTitle=catId&&CATEGORIES[catId]?CATEGORIES[catId].title:'';
       const icon=m.icon_url||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect fill=%22%235C4A1E%22 width=%2248%22 height=%2248%22 rx=%228%22/%3E%3C/svg%3E';
       return `
-        <div class="detail-mod" style="animation-delay:${Math.min(i*40,500)}ms">
+        <div class="detail-mod" data-project-id="${m.project_id}" data-mod-slug="${esc(m.slug)}" style="animation-delay:${Math.min(i*40,500)}ms">
           <img src="${icon}" alt="" onerror="this.style.display='none'">
           <div class="detail-mod-info">
             <p class="detail-mod-title">
               ${esc(m.title)}
               ${catTitle?`<span class="result-badge">${esc(catTitle)}</span>`:''}
             </p>
-            <p class="detail-mod-author">${esc((m.team?m.team:'')||'')}</p>
             <p class="detail-mod-desc">${esc((m.description||'').slice(0,150))}${(m.description||'').length>150?'…':''}</p>
             <div class="detail-mod-meta">
               <span>⬇ ${fmtCount(m.downloads)}</span>
               <span>♥ ${fmtCount(m.followers)}</span>
               <span>🔄 ${esc(fmtDate(m.updated))}</span>
-              <a href="https://modrinth.com/mod/${esc(m.slug)}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">🔗 Modrinth</a>
             </div>
           </div>
         </div>
       `;
     }).join('');
-
-    // Если каких-то модов нет на Modrinth (удалены)
     const missing=(p.selected||[]).filter(s=>!map.has(s.project_id));
     if(missing.length){
       modsBox.insertAdjacentHTML('beforeend',
@@ -1091,13 +1150,7 @@ async function openBuildDetail(presetId){
     document.getElementById('detailLoadedCount').textContent='';
   }
 }
-function closeBuildDetail(){
-  document.getElementById('buildDetailPage').hidden=true;
-  document.getElementById('buildsPage').hidden=false;
-  renderBuildsPage();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-document.getElementById('detailBackBtn').addEventListener('click',closeBuildDetail);
+document.getElementById('detailBackBtn').addEventListener('click',()=>{showPage('buildsPage');renderBuildsPage();window.scrollTo({top:0,behavior:'smooth'});});
 
 async function loadPreset(id){
   const p=getPresetById(id);if(!p)return;
@@ -1131,6 +1184,201 @@ document.getElementById('importBuildInput').addEventListener('change',async e=>{
   e.target.value='';
 });
 
+/* ============ КАРТОЧКА МОДА (Modrinth-style) ============ */
+async function openModDetail(idOrSlug,returnTo){
+  state.modDetailReturnTo=returnTo||document.querySelector('.top-nav-link.is-active')?.dataset.page||'packer';
+  showPage('modDetailPage');
+  window.scrollTo({top:0,behavior:'smooth'});
+  const content=document.getElementById('modDetailContent');
+  content.innerHTML='<div class="detail-header" style="text-align:center"><span class="spinner"></span> Загружаю карточку мода с Modrinth…</div>';
+  try{
+    const [project,versions,members]=await Promise.all([
+      api('/project/'+idOrSlug,false),
+      api('/project/'+idOrSlug+'/version',false),
+      api('/project/'+idOrSlug+'/members',false).catch(()=>[])
+    ]);
+    const author=members&&members.length?members.map(m=>m.user?.name||m.user?.username||'').filter(Boolean).join(', '):(project.team||'');
+    const latest=versions&&versions.length?versions[0]:null;
+    const deps=latest?(latest.dependencies||[]).filter(d=>d.project_id):[];
+
+    // Загружаем данные о зависимостях, чтобы показать название/иконку
+    const depProjects=[];
+    if(deps.length){
+      const depIds=[...new Set(deps.map(d=>d.project_id))];
+      for(let i=0;i<depIds.length;i+=50){
+        const chunk=depIds.slice(i,i+50);
+        try{const data=await api(`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`,false);if(Array.isArray(data))depProjects.push(...data);}catch(e){}
+      }
+    }
+    const depMap=new Map(depProjects.map(p=>[p.project_id,p]));
+
+    const icon=project.icon_url||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 96 96%22%3E%3Crect fill=%22%235C4A1E%22 width=%2296%22 height=%2296%22 rx=%2216%22/%3E%3C/svg%3E';
+    const categories=(project.categories||[]);
+    const loaders=(project.loaders||[]);
+    const gameVersions=(project.game_versions||[]).slice(-8).reverse();
+
+    // Галерея
+    const gallery=(project.gallery||[]).filter(g=>g.url);
+
+    // Ссылки
+    const linkBtns=[];
+    if(project.source_url)linkBtns.push(`<a class="mod-link" href="${esc(project.source_url)}" target="_blank" rel="noopener">💻 Исходники</a>`);
+    if(project.issues_url)linkBtns.push(`<a class="mod-link" href="${esc(project.issues_url)}" target="_blank" rel="noopener">🐞 Проблемы</a>`);
+    if(project.wiki_url)linkBtns.push(`<a class="mod-link" href="${esc(project.wiki_url)}" target="_blank" rel="noopener">📖 Wiki</a>`);
+    if(project.discord_url)linkBtns.push(`<a class="mod-link" href="${esc(project.discord_url)}" target="_blank" rel="noopener">💬 Discord</a>`);
+    (project.donation_urls||[]).forEach(d=>linkBtns.push(`<a class="mod-link" href="${esc(d.url)}" target="_blank" rel="noopener">💖 ${esc(d.platform)}</a>`));
+    linkBtns.push(`<a class="mod-link" href="https://modrinth.com/mod/${esc(project.slug)}" target="_blank" rel="noopener">🔗 Открыть на Modrinth</a>`);
+
+    // Версии — первые 15
+    const versionHtml=(versions||[]).slice(0,15).map(v=>{
+      const fname=v.files&&v.files.length?(v.files.find(f=>f.primary)||v.files[0]):null;
+      const fileUrl=fname?fname.url:'#';
+      const verMc=(v.game_versions||[]).slice(-3).join(', ');
+      const verLoaders=(v.loaders||[]).join(', ');
+      return `
+        <div class="mod-version">
+          <div class="mod-version-main">
+            <p class="mod-version-name">${esc(v.name||v.version_number)}</p>
+            <div class="mod-version-meta">
+              <span>📅 <b>${esc(fmtDate(v.date_published))}</b></span>
+              <span>🎮 ${esc(verMc)}</span>
+              <span>🧩 ${esc(verLoaders)}</span>
+              <span>⬇ ${fmtCount(v.downloads)}</span>
+            </div>
+            <div class="mod-version-tags">
+              ${(v.version_type?[v.version_type]:[]).map(t=>`<span class="mod-version-tag">${esc(t)}</span>`).join('')}
+            </div>
+          </div>
+          <a class="btn btn-primary btn-sm" href="${esc(fileUrl)}" target="_blank" rel="noopener">⬇ Скачать</a>
+        </div>
+      `;
+    }).join('');
+
+    // Зависимости
+    const depHtml=deps.length?deps.map(d=>{
+      const dp=depMap.get(d.project_id);
+      const title=dp?dp.title:d.project_id;
+      const ic=dp&&dp.icon_url?dp.icon_url:'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect fill=%22%235C4A1E%22 width=%2232%22 height=%2232%22 rx=%226%22/%3E%3C/svg%3E';
+      const type=d.dependency_type||'required';
+      const typeLabel={required:'обязательно',optional:'опционально',incompatible:'несовместимо',embedded:'встроено'}[type]||type;
+      return `
+        <div class="mod-dep" data-project-id="${esc(d.project_id)}" data-mod-slug="${dp?esc(dp.slug):''}">
+          <img src="${ic}" alt="" onerror="this.style.display='none'">
+          <div class="mod-dep-main"><p class="mod-dep-title">${esc(title)}</p></div>
+          <span class="mod-dep-type ${type}">${esc(typeLabel)}</span>
+        </div>
+      `;
+    }).join(''):'<p style="color:var(--text-faint);font-size:.88rem">Обязательных зависимостей нет.</p>';
+
+    // Рендер страницы
+    content.innerHTML=`
+      <div class="mod-hero">
+        <img class="mod-hero-icon" src="${icon}" alt="" onerror="this.style.display='none'">
+        <div class="mod-hero-info">
+          <p class="mod-hero-cat">${esc(categories[0]||'mod')}</p>
+          <h1 class="mod-hero-title">${esc(project.title)}</h1>
+          <p class="mod-hero-author">от <b>${esc(author||'неизвестный автор')}</b></p>
+          <div class="mod-hero-tags">
+            ${categories.map(c=>`<span class="mod-hero-tag">${esc(c)}</span>`).join('')}
+            ${loaders.map(l=>`<span class="mod-hero-tag loader">${esc(l)}</span>`).join('')}
+          </div>
+          <div class="mod-hero-actions">
+            <button class="btn btn-primary btn-sm" id="modCopyBtn">📋 Скопировать ссылку</button>
+            <a class="btn btn-ghost btn-sm" href="https://modrinth.com/mod/${esc(project.slug)}" target="_blank" rel="noopener">🔗 Открыть на Modrinth</a>
+          </div>
+          <div class="mod-hero-stats">
+            <span>⬇ <b>${fmtCount(project.downloads)}</b> скачиваний</span>
+            <span>♥ <b>${fmtCount(project.followers)}</b> подписчиков</span>
+            <span>🎮 <b>${esc((gameVersions||[]).join(', ')||'—')}</b></span>
+            <span>📅 Обновлён <b>${esc(fmtDate(project.updated))}</b></span>
+            ${project.license?`<span>📜 <b>${esc(project.license.name||project.license.id||'')}</b></span>`:''}
+          </div>
+        </div>
+      </div>
+
+      ${gallery.length?`
+        <div class="mod-section">
+          <h2 class="mod-section-title">🖼 Галерея</h2>
+          <div class="mod-gallery">
+            ${gallery.slice(0,8).map(g=>`
+              <figure>
+                <img src="${esc(g.url)}" alt="${esc(g.title||'')}" loading="lazy" onerror="this.parentElement.style.display='none'">
+                ${g.title?`<figcaption>${esc(g.title)}</figcaption>`:''}
+              </figure>
+            `).join('')}
+          </div>
+        </div>
+      `:''}
+
+      <div class="mod-section">
+        <h2 class="mod-section-title">📝 Описание</h2>
+        <div class="mod-body">${markdownToHtml(project.body||project.description||'')}</div>
+      </div>
+
+      ${linkBtns.length?`
+        <div class="mod-section">
+          <h2 class="mod-section-title">🔗 Ссылки</h2>
+          <div class="mod-links">${linkBtns.join('')}</div>
+        </div>
+      `:''}
+
+      ${deps.length?`
+        <div class="mod-section">
+          <h2 class="mod-section-title">🧩 Зависимости (последняя версия)</h2>
+          <div class="mod-deps">${depHtml}</div>
+        </div>
+      `:''}
+
+      <div class="mod-section">
+        <h2 class="mod-section-title">📦 Версии (${(versions||[]).length})</h2>
+        <div class="mod-version-list">${versionHtml||'<p style="color:var(--text-faint)">Версий не найдено.</p>'}</div>
+      </div>
+    `;
+
+    // Кнопка "скопировать ссылку"
+    const copyBtn=document.getElementById('modCopyBtn');
+    if(copyBtn)copyBtn.addEventListener('click',()=>{
+      const url='https://modrinth.com/mod/'+project.slug;
+      navigator.clipboard.writeText(url).then(()=>toast('Ссылка скопирована')).catch(()=>toast(url));
+    });
+  }catch(err){
+    content.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div><button class="btn btn-ghost" onclick="document.getElementById('modDetailBackBtn').click()">← Назад</button>`;
+  }
+}
+document.getElementById('modDetailBackBtn').addEventListener('click',()=>{
+  const ret=state.modDetailReturnTo||'packer';
+  showPage(ret==='builds'?'buildsPage':ret==='tools'?'toolsPage':ret==='detail'?'buildDetailPage':'mainContent');
+  if(ret==='builds')renderBuildsPage();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ============ CONTEXT MENU (ПКМ по моду) ============ */
+document.addEventListener('contextmenu',e=>{
+  const el=e.target.closest('[data-project-id]');
+  if(!el)return;
+  e.preventDefault();
+  const id=el.dataset.projectId;
+  if(!id)return;
+  // Определяем откуда пришли
+  let returnTo='packer';
+  if(!document.getElementById('buildDetailPage').hidden)returnTo='detail';
+  else if(!document.getElementById('buildsPage').hidden)returnTo='builds';
+  else if(!document.getElementById('toolsPage').hidden)returnTo='tools';
+  openModDetail(id,returnTo);
+});
+
+/* Хинт при наведении */
+let hintTimer;
+document.addEventListener('mouseover',e=>{
+  const el=e.target.closest('[data-project-id]');
+  const hint=document.getElementById('ctxHint');
+  if(el){
+    hint.classList.add('show');
+    clearTimeout(hintTimer);
+    hintTimer=setTimeout(()=>hint.classList.remove('show'),2000);
+  }
+});
+
 /* ============ DOWNLOAD ============ */
 document.getElementById('downloadBtn').addEventListener('click',()=>downloadPack('zip'));
 document.getElementById('mrpackBtn').addEventListener('click',()=>downloadPack('mrpack'));
@@ -1159,7 +1407,7 @@ async function downloadPack(format){
       progressFill.style.width=((ok+failed)/fileList.length*100)+'%';
       st.textContent=`Скачиваю: ${ok+failed} / ${fileList.length}`;
     }
-    const readme=`# IMROVICH Packer — сборка\n\nСоздано: ${new Date().toLocaleString('ru-RU')}\n\nЗагрузчик: **${state.loader}**\nВерсии Minecraft: **${state.gameVersions.join(', ')}**\nЯдро рендера: **${state.engine||'не выбрано'}**\n\n## Моды (${allMods.length})\n\n${allMods.map(m=>`- **${m.title}** — [Modrinth](https://modrinth.com/mod/${m.slug})`).join('\n')}\n\n---\nСобрано через IMROVICH Packer.\n`;
+    const readme=`# IMROVICH Packer — сборка\n\nСоздано: ${new Date().toLocaleString('ru-RU')}\n\nЗагрузчик: **${state.loader}**\nВерсии Minecraft: **${state.gameVersions.join(', ')}**\n\n## Моды (${allMods.length})\n\n${allMods.map(m=>`- **${m.title}** — [Modrinth](https://modrinth.com/mod/${m.slug})`).join('\n')}\n`;
     zip.file('README.md',readme);
     if(format==='mrpack'){
       st.textContent='Формирую .mrpack…';
@@ -1212,7 +1460,6 @@ async function collectFilesWithDependencies(rootMods,onProgress){
   }
   return result;
 }
-
 document.getElementById('wizardTrack').addEventListener('click',e=>{
   const b=e.target.closest('[data-action="back"],[data-action="next"]');
   if(!b)return;
@@ -1222,12 +1469,7 @@ document.getElementById('wizardTrack').addEventListener('click',e=>{
 /* ============ ИНСТРУМЕНТЫ ============ */
 function extractProjectIdsFromMrpack(index){
   const ids=new Set();
-  (index.files||[]).forEach(f=>{
-    (f.downloads||[]).forEach(url=>{
-      const m=url.match(/\/data\/([A-Za-z0-9]+)\/versions?\//);
-      if(m)ids.add(m[1]);
-    });
-  });
+  (index.files||[]).forEach(f=>{(f.downloads||[]).forEach(url=>{const m=url.match(/\/data\/([A-Za-z0-9]+)\/versions?\//);if(m)ids.add(m[1]);});});
   return [...ids];
 }
 async function readMrpack(file){
@@ -1260,7 +1502,7 @@ async function fetchProjectsByIds(ids){
   for(let i=0;i<ids.length;i+=50){
     const chunk=ids.slice(i,i+50);
     const url=`/projects?ids=${encodeURIComponent(JSON.stringify(chunk))}`;
-    try{const data=await api(url,false);if(Array.isArray(data))result.push(...data);}catch(e){console.warn('Ошибка партии',e);}
+    try{const data=await api(url,false);if(Array.isArray(data))result.push(...data);}catch(e){}
   }
   return result;
 }
@@ -1268,15 +1510,13 @@ function setupToolsTabs(){
   const tabs=document.querySelectorAll('.tools-tab');
   const panels={check:'toolPanelCheck',updates:'toolPanelUpdates',compat:'toolPanelCompat',convert:'toolPanelConvert'};
   tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
+    tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
     Object.values(panels).forEach(id=>document.getElementById(id).hidden=true);
     document.getElementById(panels[t.dataset.tool]).hidden=false;
   }));
 }
 function setupDropZone(zoneId,inputId,onFile){
-  const zone=document.getElementById(zoneId);
-  const input=document.getElementById(inputId);
+  const zone=document.getElementById(zoneId);const input=document.getElementById(inputId);
   zone.addEventListener('click',()=>input.click());
   zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
   zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
@@ -1288,7 +1528,7 @@ setupDropZone('checkDrop','checkFile',async f=>{
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Читаю файл…</p>';
   try{
     const pack=await readPackFile(f);
-    box.innerHTML='<p class="status-text"><span class="spinner"></span>Получаю данные о '+pack.projectIds.length+' модах…</p>';
+    box.innerHTML='<p class="status-text"><span class="spinner"></span>Получаю данные…</p>';
     const projects=await fetchProjectsByIds(pack.projectIds);
     if(!projects.length)throw new Error('Не удалось загрузить данные');
     box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю…</p>';
@@ -1297,21 +1537,18 @@ setupDropZone('checkDrop','checkFile',async f=>{
     KNOWN_CONFLICTS.forEach(([a,b])=>{if(slugs.has(a)&&slugs.has(b))issues.push({type:'error',icon:'⛔',text:`Конфликт: <strong>${a}</strong> несовместим с <strong>${b}</strong>`});});
     const yearAgo=Date.now()-365*24*60*60*1000;
     const old=projects.filter(p=>new Date(p.updated).getTime()<yearAgo);
-    if(old.length>0)issues.push({type:'warn',icon:'⏰',text:`Устаревшие (не обновлялись больше года): <strong>${old.map(p=>p.title).join(', ')}</strong>`});
+    if(old.length>0)issues.push({type:'warn',icon:'⏰',text:`Устаревшие: <strong>${old.map(p=>p.title).join(', ')}</strong>`});
     if(pack.mcVersion){
       const bad=projects.filter(p=>!p.game_versions.includes(pack.mcVersion)&&p.game_versions.length>0);
       if(bad.length>0)issues.push({type:'warn',icon:'🎮',text:`Не заявлена поддержка ${pack.mcVersion}: <strong>${bad.map(p=>p.title).join(', ')}</strong>`});
     }
-    if(issues.length===0){
-      box.innerHTML=`<div class="ok-box">✅ Проверка пройдена. Модов: <strong>${projects.length}</strong>.</div>${renderProjectList(projects)}`;
-    }else{
-      box.innerHTML=`<div class="warn-box"><strong>Найдено проблем:</strong> ${issues.length}</div>${issues.map(i=>`<div class="tool-issue ${i.type}"><span class="tool-issue-icon">${i.icon}</span><span>${i.text}</span></div>`).join('')}${renderProjectList(projects)}`;
-    }
+    if(issues.length===0){box.innerHTML=`<div class="ok-box">✅ Проверка пройдена. Модов: <strong>${projects.length}</strong>.</div>${renderProjectList(projects)}`;}
+    else{box.innerHTML=`<div class="warn-box"><strong>Найдено проблем:</strong> ${issues.length}</div>${issues.map(i=>`<div class="tool-issue ${i.type}"><span class="tool-issue-icon">${i.icon}</span><span>${i.text}</span></div>`).join('')}${renderProjectList(projects)}`;}
   }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
 function renderProjectList(projects){
   return '<div style="margin-top:18px"><p class="hint" style="margin-bottom:10px">Моды в сборке:</p>'+
-    projects.map((p,i)=>`<div class="update-row" style="animation-delay:${Math.min(i*30,300)}ms">
+    projects.map((p,i)=>`<div class="update-row" data-project-id="${p.project_id}" data-mod-slug="${esc(p.slug)}" style="animation-delay:${Math.min(i*30,300)}ms">
       <img src="${p.icon_url||''}" alt="" onerror="this.style.display='none'">
       <div class="update-row-main">
         <p class="update-row-title">${esc(p.title)}</p>
@@ -1326,31 +1563,23 @@ setupDropZone('updatesDrop','updatesFile',async f=>{
     const pack=await readPackFile(f);
     box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю моды…</p>';
     const projects=await fetchProjectsByIds(pack.projectIds);
-    if(!projects.length)throw new Error('Не удалось получить данные');
-    box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю последние версии…</p>';
+    box.innerHTML='<p class="status-text"><span class="spinner"></span>Проверяю версии…</p>';
     const updates=[];
     for(const p of projects){
-      try{
-        const versions=await api(`/project/${p.project_id}/version`);
-        updates.push({project:p,latest:versions&&versions.length?versions[0]:null});
-      }catch(e){updates.push({project:p,latest:null});}
+      try{const versions=await api(`/project/${p.project_id}/version`);updates.push({project:p,latest:versions&&versions.length?versions[0]:null});}
+      catch(e){updates.push({project:p,latest:null});}
     }
-    box.innerHTML=`
-      <div class="ok-box">Проверено: <strong>${updates.length}</strong>.</div>
-      ${updates.map((u,i)=>`
-        <div class="update-row" style="animation-delay:${Math.min(i*30,300)}ms">
-          <img src="${u.project.icon_url||''}" alt="" onerror="this.style.display='none'">
-          <div class="update-row-main">
-            <p class="update-row-title">${esc(u.project.title)}</p>
-            <div class="update-row-meta">
-              <span>Последняя: <b>${esc(u.latest?u.latest.version_number:'—')}</b></span>
-              <span>От: ${esc(u.latest?fmtDate(u.latest.date_published):'—')}</span>
-              <span>🎮 ${esc((u.latest?.game_versions||[]).slice(-2).join(', '))}</span>
-            </div>
+    box.innerHTML=`<div class="ok-box">Проверено: <strong>${updates.length}</strong>.</div>${updates.map((u,i)=>`
+      <div class="update-row" data-project-id="${u.project.project_id}" data-mod-slug="${esc(u.project.slug)}" style="animation-delay:${Math.min(i*30,300)}ms">
+        <img src="${u.project.icon_url||''}" alt="" onerror="this.style.display='none'">
+        <div class="update-row-main">
+          <p class="update-row-title">${esc(u.project.title)}</p>
+          <div class="update-row-meta">
+            <span>Последняя: <b>${esc(u.latest?u.latest.version_number:'—')}</b></span>
+            <span>От: ${esc(u.latest?fmtDate(u.latest.date_published):'—')}</span>
           </div>
         </div>
-      `).join('')}
-    `;
+      </div>`).join('')}`;
   }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
 document.getElementById('compatCheckBtn').addEventListener('click',async()=>{
@@ -1363,40 +1592,24 @@ document.getElementById('compatCheckBtn').addEventListener('click',async()=>{
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю моды…</p>';
   try{
     const projects=[];
-    for(const s of slugs){
-      try{const p=await api('/project/'+s);projects.push(p);}
-      catch(e){projects.push({error:true,slug:s});}
-    }
-    const valid=projects.filter(p=>!p.error);
-    const invalid=projects.filter(p=>p.error);
+    for(const s of slugs){try{const p=await api('/project/'+s);projects.push(p);}catch(e){projects.push({error:true,slug:s});}}
+    const valid=projects.filter(p=>!p.error);const invalid=projects.filter(p=>p.error);
     if(!valid.length){box.innerHTML='<div class="warn-box">Ни один мод не найден.</div>';return;}
     const foundSlugs=new Set(valid.map(p=>p.slug));
-    const conflicts=[];
-    KNOWN_CONFLICTS.forEach(([a,b])=>{if(foundSlugs.has(a)&&foundSlugs.has(b))conflicts.push([a,b]);});
-    let commonLoaders=valid[0].loaders.slice();
-    valid.forEach(p=>{commonLoaders=commonLoaders.filter(l=>p.loaders.includes(l));});
-    let commonMCs=valid[0].game_versions.slice();
-    valid.forEach(p=>{commonMCs=commonMCs.filter(v=>p.game_versions.includes(v));});
+    const conflicts=[];KNOWN_CONFLICTS.forEach(([a,b])=>{if(foundSlugs.has(a)&&foundSlugs.has(b))conflicts.push([a,b]);});
+    let commonLoaders=valid[0].loaders.slice();valid.forEach(p=>{commonLoaders=commonLoaders.filter(l=>p.loaders.includes(l));});
+    let commonMCs=valid[0].game_versions.slice();valid.forEach(p=>{commonMCs=commonMCs.filter(v=>p.game_versions.includes(v));});
     box.innerHTML=`
       ${invalid.length?`<div class="tool-issue warn"><span class="tool-issue-icon">⚠️</span><span>Не найдены: <strong>${invalid.map(i=>esc(i.slug)).join(', ')}</strong></span></div>`:''}
       ${conflicts.length?conflicts.map(([a,b])=>`<div class="compat-conflict"><strong>⛔ Конфликт:</strong> ${esc(a)} ↔ ${esc(b)}</div>`).join(''):'<div class="compat-ok">✅ Явных конфликтов нет</div>'}
       <div class="compat-grid" style="margin-top:14px">
-        <div class="compat-card">
-          <p class="compat-card-title">🧩 Общие загрузчики</p>
-          ${commonLoaders.length?commonLoaders.map(l=>`<span class="compat-card-tag">${esc(l)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих</span>'}
-        </div>
-        <div class="compat-card">
-          <p class="compat-card-title">🎮 Общие версии MC</p>
-          ${commonMCs.length?commonMCs.slice(0,8).map(v=>`<span class="compat-card-tag">${esc(v)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет общих</span>'}
-        </div>
+        <div class="compat-card"><p class="compat-card-title">🧩 Общие загрузчики</p>${commonLoaders.length?commonLoaders.map(l=>`<span class="compat-card-tag">${esc(l)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет</span>'}</div>
+        <div class="compat-card"><p class="compat-card-title">🎮 Общие версии MC</p>${commonMCs.length?commonMCs.slice(0,8).map(v=>`<span class="compat-card-tag">${esc(v)}</span>`).join(''):'<span style="color:var(--text-faint);font-size:.85rem">Нет</span>'}</div>
       </div>
     `;
   }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
-document.getElementById('compatClearBtn').addEventListener('click',()=>{
-  document.getElementById('compatInput').value='';
-  document.getElementById('compatResults').innerHTML='';
-});
+document.getElementById('compatClearBtn').addEventListener('click',()=>{document.getElementById('compatInput').value='';document.getElementById('compatResults').innerHTML='';});
 setupDropZone('convertDrop','convertFile',async f=>{
   const box=document.getElementById('convertResults');
   box.innerHTML='<p class="status-text"><span class="spinner"></span>Читаю .mrpack…</p>';
@@ -1404,23 +1617,18 @@ setupDropZone('convertDrop','convertFile',async f=>{
     const index=await readMrpack(f);
     const projectIds=extractProjectIdsFromMrpack(index);
     if(!projectIds.length)throw new Error('Не удалось извлечь моды');
-    box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю данные о ${projectIds.length} модах…</p>';
+    box.innerHTML='<p class="status-text"><span class="spinner"></span>Загружаю данные…</p>';
     const projects=await fetchProjectsByIds(projectIds);
     const loaderKey=Object.keys(index.dependencies||{}).find(k=>k!=='minecraft')||'fabric';
     const loaderMap={'fabric-loader':'fabric','quilt-loader':'quilt','neoforge-loader':'neoforge','forge':'forge'};
     const loader=loaderMap[loaderKey]||loaderKey.replace(/-loader$/,'');
     const mcVersion=(index.dependencies||{}).minecraft||'1.20.1';
-    const preset={
-      format:'imrovich-preset',version:2,name:index.name||f.name.replace(/\.mrpack$/i,'')||'Импортированная сборка',
-      savedAt:new Date().toISOString(),loader:loader,gameVersions:[mcVersion],engine:null,categoryIds:[],
-      selected:projects.map(p=>{
-        let catId='qol';
-        const tags=(p.categories||[]).map(c=>c.toLowerCase());
-        if(tags.includes('optimization'))catId='optimization';
-        else if(tags.includes('decoration')||tags.includes('worldgen')||tags.includes('mobs'))catId='visuals';
-        return{catId,project_id:p.project_id,slug:p.slug,title:p.title};
-      })
-    };
+    const preset={format:'imrovich-preset',version:2,name:index.name||f.name.replace(/\.mrpack$/i,'')||'Импорт',savedAt:new Date().toISOString(),loader:loader,gameVersions:[mcVersion],engine:null,categoryIds:[],selected:projects.map(p=>{
+      let catId='qol';const tags=(p.categories||[]).map(c=>c.toLowerCase());
+      if(tags.includes('optimization'))catId='optimization';
+      else if(tags.includes('decoration')||tags.includes('worldgen')||tags.includes('mobs'))catId='visuals';
+      return{catId,project_id:p.project_id,slug:p.slug,title:p.title};
+    })};
     preset.categoryIds=[...new Set(preset.selected.map(s=>s.catId))];
     const blob=new Blob([JSON.stringify(preset,null,2)],{type:'application/json'});
     const url=URL.createObjectURL(blob);
@@ -1434,13 +1642,12 @@ setupDropZone('convertDrop','convertFile',async f=>{
     `;
     document.getElementById('convertAddToPresetsBtn').addEventListener('click',()=>{
       const p={...preset,id:Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
-      addPreset(p);
-      toast(`«${p.name}» добавлена в Сборки`);
+      addPreset(p);toast(`«${p.name}» добавлена`);
     });
   }catch(err){box.innerHTML=`<div class="warn-box"><strong>Ошибка:</strong> ${esc(err.message)}</div>`;}
 });
 
-/* ============ RIPPLE для всех кнопок ============ */
+/* ============ RIPPLE ============ */
 document.addEventListener('click',e=>{
   const btn=e.target.closest('.btn, .build-load-btn, .build-export-btn, .build-del-btn, .top-nav-link, .option-card, .pager-btn, .results-tab, .tools-tab');
   if(!btn)return;
